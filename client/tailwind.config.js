@@ -11,12 +11,15 @@ export default {
     extend: {},
     fontFamily: {
       'lobster': ['Lobster'],
+      'lora': ['Lora'],
+      'philosopher': ['Philosopher'],
     },
     colors: {
       buttextdark: '#05f7ff',
       buttextlight: '#009fcb',
       kechuyentextlight: '#cccccc',
       default: '#374151',
+      signupsignin: '#F6F6F6',
     },
   },
   plugins: [
