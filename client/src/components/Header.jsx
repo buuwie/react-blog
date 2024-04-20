@@ -8,7 +8,7 @@ export default function Header() {
     const path = useLocation().pathname;
   return (
     <Navbar className='border-b-2'>
-        <Link to="/" className='self-center whitespace-nowrap text-kechuyentextlight text-sm sm:text-xl
+        <Link to="/" className='self-center whitespace-nowrap text-kechuyentextlight text-sm sm:text-3xl
         font-semibold dark:text-white font-lobster'>
             <span className='py-1 text-buttextlight font-lobster dark:text-buttextdark'>But</span>kechuyen
         </Link>
@@ -28,7 +28,7 @@ export default function Header() {
                 <FaMoon />
             </Button>
             <Link to='/sign-in'>
-                <Button gradientDuoTone='purpleToBlue' outline>
+                <Button gradientDuoTone='purpleToBlue' className='hover:text-white' outline>
                     Sign In
                 </Button>
             </Link>
