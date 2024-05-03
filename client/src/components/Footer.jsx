@@ -13,9 +13,9 @@ export default function FooterCom() {
             font-semibold dark:text-white font-lobster'>
                         <span className='py-1 text-buttextlight font-lobster dark:text-buttextdark'>But</span>kechuyen
                     </Link>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, ipsa labore. Odio veritatis similique ea quasi odit reprehenderit voluptatum soluta. Perspiciatis nulla ut veniam debitis eum accusantium neque quasi at.</p>
+                    
                 </div>
-                <div className='grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 pt-3
+                <div className='grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3  pt-3 relative
                 sm:gap-6'>
                     <div>
                         <Footer.Title title='About me' />
