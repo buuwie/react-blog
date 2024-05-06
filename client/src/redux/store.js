@@ -14,6 +14,11 @@ const persistConfig = {
     key: 'root',
     storage,
     version: 1,
+    // expire: {
+    //   root: {
+    //     time: 24 * 60 * 60 * 1000,
+    //   }
+    // }
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
