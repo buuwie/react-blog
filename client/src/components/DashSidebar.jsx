@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { HiUser, HiArrowSmRight, HiDocumentText, HiOutlineUserGroup, HiAnnotation } from 'react-icons/hi'
+import { HiUser, HiArrowSmRight, HiDocumentText, HiChartPie, HiOutlineUserGroup, HiAnnotation } from 'react-icons/hi'
 import { Link, useLocation } from 'react-router-dom'
 import { Sidebar, SidebarItem, SidebarItemGroup, SidebarItems } from 'flowbite-react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -36,9 +36,20 @@ export default function DashSidebar() {
     <Sidebar className='w-full md:w-56'>
         <SidebarItems>
             <SidebarItemGroup className='flex flex-col gap-1'>
+                {currentUser && currentUser.isAdmin && (
+                  <Link to='/dashboard?tab=main'>
+                    <Sidebar.Item
+                      active={tab === 'main' || !tab}
+                      icon={HiChartPie}
+                      as='div'
+                    >
+                      Dashboard
+                    </Sidebar.Item>
+                  </Link>
+                )}
                 <Link to='/dashboard?tab=profile'>
                     <SidebarItem as={'div'} active={tab === 'profile'} icon={HiUser} label={currentUser.isAdmin ? 'Admin' : 'User'} labelColor='dark'>
-                        Profile
+                        Cá nhân
                     </SidebarItem>
                 </Link>
                 {currentUser.isAdmin && (
@@ -48,7 +59,7 @@ export default function DashSidebar() {
                       icon={HiDocumentText}
                       as='div'
                     >
-                      Posts
+                      Bài viết
                     </SidebarItem>
                   </Link>
                 )}
@@ -60,7 +71,7 @@ export default function DashSidebar() {
                         icon={HiOutlineUserGroup}
                         as='div'
                       >
-                        Users
+                        Người dùng
                       </SidebarItem>
                     </Link>
                     <Link to='/dashboard?tab=comments'>
@@ -69,13 +80,13 @@ export default function DashSidebar() {
                         icon={HiAnnotation}
                         as='div'
                       >
-                        Comments
+                        Bình luận
                       </SidebarItem>
                     </Link>
                   </>
                 )}
                 <SidebarItem onClick={handleSignout} icon={HiArrowSmRight} className='cursor-pointer'>
-                    Sign Out
+                    Đăng xuất
                 </SidebarItem>
             </SidebarItemGroup>
         </SidebarItems>

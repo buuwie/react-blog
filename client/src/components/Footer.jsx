@@ -5,7 +5,7 @@ import { BsFacebook, BsInstagram, BsYoutube } from 'react-icons/bs'
 
 export default function FooterCom() {
   return (
-    <Footer container className='border border-t-8 border-teal-500'>
+    <Footer container className="border border-t-8 border-teal-500 bg-[url('https://i.pinimg.com/564x/dc/b4/7e/dcb47e8d388c483c36c6e0ffd1585bd3.jpg')] bg-no-repeat bg-cover">
         <div className='w-full max-w-7xl mx-auto'>
             <div className='grid w-full justify-between sm:flex md:grid-cols-1'>
                 <div className='mt-5'>
@@ -21,16 +21,10 @@ export default function FooterCom() {
                         <Footer.Title title='About me' />
                         <Footer.LinkGroup col>
                             <Footer.Link
-                            href='https://instagram.com/butkechuyen'
+                            href='/about'
                             target='_blank'
                             rel='noopener noreferer'>
-                                Instagram
-                            </Footer.Link>
-                            <Footer.Link
-                            href='https://facebook.com/buuwie.hc'
-                            target='_blank'
-                            rel='noopener noreferer'>
-                                Facebook
+                                Butkechuyen
                             </Footer.Link>
                         </Footer.LinkGroup>
                     </div>
@@ -44,7 +38,7 @@ export default function FooterCom() {
                                 Instagram
                             </Footer.Link>
                             <Footer.Link
-                            href='https://facebook.com/buuwie.hc'
+                            href='https://www.facebook.com/its.butkechuyen/'
                             target='_blank'
                             rel='noopener noreferer'>
                                 Facebook
@@ -55,16 +49,16 @@ export default function FooterCom() {
                         <Footer.Title title='Legal' />
                         <Footer.LinkGroup col>
                             <Footer.Link
-                            href='https://instagram.com/butkechuyen'
+                            href='#'
                             target='_blank'
                             rel='noopener noreferer'>
-                                Instagram
+                                Privacy Policy
                             </Footer.Link>
                             <Footer.Link
-                            href='https://facebook.com/buuwie.hc'
+                            href='#'
                             target='_blank'
                             rel='noopener noreferer'>
-                                Facebook
+                                Terms & Conditions
                             </Footer.Link>
                         </Footer.LinkGroup>
                     </div>
@@ -72,10 +66,10 @@ export default function FooterCom() {
             </div>
             <Footer.Divider />
             <div className='w-full sm:flex sm:items-center sm:justify-between'>
-                <Footer.Copyright href='#' by="Butkechuyen" year={new Date().getFullYear()}/>
+                <Footer.Copyright href='/' by="Butkechuyen" year={new Date().getFullYear()}/>
                 <div className='flex gap-6 sm:mt-0 mt-4 sm:justify-center'>
-                    <Footer.Icon href='https://facebook.com/buuwie.hc' icon={BsFacebook} />
-                    <Footer.Icon href='#' icon={BsInstagram} />
+                    <Footer.Icon href='https://www.facebook.com/its.butkechuyen/' icon={BsFacebook} />
+                    <Footer.Icon href='https://instagram.com/butkechuyen' icon={BsInstagram} />
                     <Footer.Icon href='#' icon={BsYoutube} />
                 </div>
             </div>

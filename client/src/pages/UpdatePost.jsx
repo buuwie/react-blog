@@ -109,7 +109,7 @@ export default function UpdatePost() {
   };
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>
-      <h1 className='text-center text-3xl my-7 font-semibold'>Update post</h1>
+      <h1 className='text-center text-3xl my-7 font-semibold'>Chỉnh sửa bài viết</h1>
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
         <div className='flex flex-col gap-4 sm:flex-row justify-between'>
           <TextInput
@@ -129,7 +129,7 @@ export default function UpdatePost() {
             }
             value={formData.category}
           >
-            <option value="uncategorized">Select a category</option>
+            <option value="uncategorized">Chọn 1 chủ để</option>
             <option value="life">Cuộc sống</option>
             <option value="love">Tình yêu</option>
             <option value="friendship">Tình bạn</option>
@@ -158,7 +158,7 @@ export default function UpdatePost() {
                 />
               </div>
             ) : (
-              'Upload Image'
+              'Tải ảnh lên'
             )}
           </Button>
         </div>
@@ -173,7 +173,7 @@ export default function UpdatePost() {
         <ReactQuill
           theme='snow'
           value={formData.content}
-          placeholder='Write something...'
+          placeholder='Viết gì đó đi'
           className='h-72 mb-12'
           required
           onChange={(value) => {
@@ -181,7 +181,7 @@ export default function UpdatePost() {
           }}
         />
         <Button type='submit' gradientDuoTone='purpleToPink'>
-          Update post
+          Cập nhật bài viết
         </Button>
         {publishError && (
           <Alert className='mt-5' color='failure'>

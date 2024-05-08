@@ -80,7 +80,7 @@ export default function CreatePost() {
     
     return (
         <div className='p-3 max-w-3xl mx-auto min-h-screen'>
-            <h1 className='text-center text-3xl my-7 font-semibold'> Create a post</h1>
+            <h1 className='text-center text-3xl my-7 font-semibold'>Tạo bài viết mới</h1>
             <form action="" className='flex flex-col gap-4' onSubmit={handleSubmit}>
                 <div className='flex flex-col gap-4 sm:flex-row justify-between'>
                     <TextInput type='text' placeholder='Title' required id='title'
@@ -90,7 +90,7 @@ export default function CreatePost() {
                     <Select onChange={(e) =>
                         setFormData({ ...formData, category: e.target.value })
                     }>
-                        <option value="uncategorized">Select a category</option>
+                        <option value="uncategorized">Chọn 1 chủ đề</option>
                         <option value="life">Cuộc sống</option>
                         <option value="love">Tình yêu</option>
                         <option value="friendship">Tình bạn</option>
@@ -119,7 +119,7 @@ export default function CreatePost() {
                             />
                         </div>
                         ) : (
-                        'Upload Image'
+                        'Tải ảnh lên'
                         )}
                     </Button>
                 </div>

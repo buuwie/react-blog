@@ -80,13 +80,13 @@ export default function DashPosts() {
         <>
           <Table hoverable className='shadow-md'>
             <TableHead>
-              <TableHeadCell>Date updated</TableHeadCell>
-              <TableHeadCell>Post image</TableHeadCell>
-              <TableHeadCell>Post title</TableHeadCell>
-              <TableHeadCell>Category</TableHeadCell>
-              <TableHeadCell>Delete</TableHeadCell>
+              <TableHeadCell>Lần cuối chỉnh sửa</TableHeadCell>
+              <TableHeadCell>Thumbnail</TableHeadCell>
+              <TableHeadCell>Tiêu đề</TableHeadCell>
+              <TableHeadCell>Chủ đề</TableHeadCell>
+              <TableHeadCell>Tác vụ</TableHeadCell>
               <TableHeadCell>
-                <span>Edit</span>
+                <span> </span>
               </TableHeadCell>
             </TableHead>
             {userPosts.map((post) => (
@@ -121,7 +121,7 @@ export default function DashPosts() {
                       }}
                       className='font-medium text-red-500 hover:underline cursor-pointer'
                     >
-                      Delete
+                      Xóa
                     </span>
                   </TableCell>
                   <TableCell>
@@ -129,7 +129,7 @@ export default function DashPosts() {
                       className='text-teal-500 hover:underline'
                       to={`/update-post/${post._id}`}
                     >
-                      <span>Edit</span>
+                      <span>Chỉnh sửa</span>
                     </Link>
                   </TableCell>
                 </TableRow>
@@ -141,12 +141,12 @@ export default function DashPosts() {
               onClick={handleShowMore}
               className='w-full text-teal-500 self-center text-sm py-7'
             >
-              Show more
+              Hiển thị thêm
             </button>
           )}
         </>
       ) : (
-        <p>You have no posts yet!</p>
+        <p>Bạn chưa có bài viết nào!</p>
       )}
       <Modal
         show={showModal}
@@ -159,14 +159,14 @@ export default function DashPosts() {
           <div className='text-center'>
             <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
             <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
-              Are you sure you want to delete this post?
+              Bạn có chắc muốn xóa bài viết này?
             </h3>
             <div className='flex justify-center gap-4'>
               <Button color='failure' onClick={handleDeletePost}>
-                Yes, I'm sure
+                Có, tôi chắc chắn
               </Button>
               <Button color='gray' onClick={() => setShowModal(false)}>
-                No, cancel
+                Không, tôi muốn hủy
               </Button>
             </div>
           </div>

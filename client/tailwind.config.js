@@ -13,6 +13,7 @@ export default {
       'lobster': ['Lobster'],
       'lora': ['Lora'],
       'philosopher': ['Philosopher'],
+      'courier': ['Courier New'],
     },
     colors: {
       buttextdark: '#05f7ff',

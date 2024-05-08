@@ -1,6 +1,4 @@
-import { Table, TableHead, TableHeadCell, TableBody, TableCell, TableRow,
-    Modal, Button
-   } from 'flowbite-react';
+import { Table, TableHead, TableHeadCell, Modal, Button} from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
@@ -71,12 +69,12 @@ export default function DashUsers() {
         <>
           <Table hoverable className='shadow-md w-full'>
             <TableHead>
-              <TableHeadCell>Date created</TableHeadCell>
-              <TableHeadCell>User image</TableHeadCell>
-              <TableHeadCell>Username</TableHeadCell>
+              <TableHeadCell>Ngày tạo</TableHeadCell>
+              <TableHeadCell>Avatar</TableHeadCell>
+              <TableHeadCell>Tên người dùng</TableHeadCell>
               <TableHeadCell>Email</TableHeadCell>
-              <TableHeadCell>Admin</TableHeadCell>
-              <TableHeadCell>Delete</TableHeadCell>
+              <TableHeadCell>Là Admin</TableHeadCell>
+              <TableHeadCell>Tác vụ</TableHeadCell>
             </TableHead>
             {users.map((user) => (
               <Table.Body className='divide-y' key={user._id}>
@@ -108,7 +106,7 @@ export default function DashUsers() {
                       }}
                       className='font-medium text-red-500 hover:underline cursor-pointer'
                     >
-                      Delete
+                      Xóa
                     </span>
                   </Table.Cell>
                 </Table.Row>
@@ -120,12 +118,12 @@ export default function DashUsers() {
               onClick={handleShowMore}
               className='w-full text-teal-500 self-center text-sm py-7'
             >
-              Show more
+              Hiển thị thêm
             </button>
           )}
         </>
       ) : (
-        <p>You have no users yet!</p>
+        <p>Chưa có người dùng nào!</p>
       )}
       <Modal
         show={showModal}
@@ -138,14 +136,14 @@ export default function DashUsers() {
           <div className='text-center'>
             <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
             <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
-              Are you sure you want to delete this user?
+              Bạn có chắc muốn xóa người dùng này?
             </h3>
             <div className='flex justify-center gap-4'>
               <Button color='failure' onClick={handleDeleteUser}>
-                Yes, I'm sure
+                Có, tôi chắc chắn
               </Button>
               <Button color='gray' onClick={() => setShowModal(false)}>
-                No, cancel
+                Không, tôi muốn hủy
               </Button>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Avatar, Button, Dropdown, DropdownDivider, DropdownHeader, DropdownItem, Navbar, NavbarCollapse, NavbarLink, NavbarToggle, TextInput } from 'flowbite-react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
@@ -10,9 +10,19 @@ import { signoutSuccess } from '../redux/user/userSlice'
 export default function Header() {
     const {currentUser} = useSelector((state) => state.user)
     const {theme} = useSelector((state) => state.theme)
+    const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const path = useLocation().pathname;
+
+    useEffect(() => {
+        const urlParams = new URLSearchParams(location.search);
+        const searchTermFromUrl = urlParams.get('searchTerm');
+        if (searchTermFromUrl) {
+          setSearchTerm(searchTermFromUrl);
+        }
+    }, [location.search]);
+    
     const handleSignout = async () => {
         try {
           const res = await fetch('/api/user/signout', {
@@ -29,18 +39,29 @@ export default function Header() {
           console.log(error.message);
         }
       };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const urlParams = new URLSearchParams(location.search);
+        urlParams.set('searchTerm', searchTerm);
+        const searchQuery = urlParams.toString();
+        navigate(`/search?${searchQuery}`);
+    };
+
   return (
-    <Navbar className='border-b-2'>
+    <Navbar className="border-b-2 bg-[url('https://i.pinimg.com/564x/dc/b4/7e/dcb47e8d388c483c36c6e0ffd1585bd3.jpg')] bg-no-repeat bg-cover">
         <Link to="/" className='self-center whitespace-nowrap text-kechuyentextlight text-sm sm:text-3xl
         font-semibold dark:text-white font-lobster'>
             <span className='py-1 text-buttextlight font-lobster dark:text-buttextdark'>But</span>kechuyen
         </Link>
-        <form action="">
+        <form onSubmit={handleSubmit}>
             <TextInput 
                 type='text'
                 placeholder='Tìm kiếm...'
                 rightIcon={AiOutlineSearch}
                 className='hidden lg:inline'
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
             />
         </form>
         <Button className='w-12 h-10 lg:hidden' color='gray' pill>
@@ -60,16 +81,16 @@ export default function Header() {
                         <span className='block text-sm font-medium truncate'>{currentUser.email}</span>
                     </DropdownHeader>
                     <Link to={'/dashboard/?tab=profile'}>
-                        <DropdownItem>Profile</DropdownItem>
+                        <DropdownItem>Cá nhân</DropdownItem>
                     </Link>
                     <DropdownDivider />
-                    <DropdownItem onClick={handleSignout}>Sign Out</DropdownItem>
+                    <DropdownItem onClick={handleSignout}>Đăng xuất</DropdownItem>
                 </Dropdown>
             ):
             (
                 <Link to='/sign-in'>
                     <Button gradientDuoTone='purpleToBlue' className='hover:text-white' outline>
-                        Sign In
+                        Đăng nhập
                     </Button>
                 </Link>
             )
@@ -80,17 +101,17 @@ export default function Header() {
         <NavbarCollapse>
             <NavbarLink href='/' active={path === '/'} as={'div'} className='font-semibold'>
                 <Link to='/' style={{ color: path === '/' ? '#009fcb' : 'inherit' }}>
-                    Home
+                    Trang chủ
                 </Link>
             </NavbarLink>
             <NavbarLink href='/about' active={path === '/about'} as={'div'} className='font-semibold'>
                 <Link to='/about' style={{ color: path === '/about' ? '#009fcb' : 'inherit' }}>
-                    About
+                    Giới thiệu
                 </Link>
             </NavbarLink>
-            <NavbarLink href='/projects' active={path === '/projects'} as={'div'} className='font-semibold'>
-                <Link to='/projects' style={{ color: path === '/projects' ? '#009fcb' : 'inherit' }}>
-                    Projects
+            <NavbarLink href='/search' active={path === '/search'} as={'div'} className='font-semibold'>
+                <Link to='/search' style={{ color: path === '/search' ? '#009fcb' : 'inherit' }}>
+                    Bài viết
                 </Link>
             </NavbarLink>
         </NavbarCollapse>

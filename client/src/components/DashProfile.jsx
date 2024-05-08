@@ -158,7 +158,7 @@ export default function DashProfile() {
 
   return (
     <div className='max-w-lg mx-auto p-3 w-full'>
-        <h1 className='my-7 text-center font-semibold text-3xl'>Profile</h1>
+        <h1 className='my-7 text-center font-semibold text-3xl'>Trang cá nhân</h1>
         <form action="" onSubmit={handleSubmit} className='flex flex-col gap-4'>
             <input hidden type="file" accept='image/*' onChange={handleImageChange} ref={filePickerRef} />
             <div className='w-32 h-32 self-center cursor-pointer shadow-md overflow-hidden rounded-full relative'
@@ -198,21 +198,21 @@ export default function DashProfile() {
             <TextInput type='password' id='password' placeholder='Password' onChange={handleChange}/>
             <Button type='submit' gradientDuoTone='purpleToBlue' outline
             disabled={loading || imageFileUploading}>
-                {loading ? 'Loading...' : 'Update'}
+                {loading ? 'Loading...' : 'Cập nhật'}
             </Button>
             {currentUser.isAdmin && (
               <Link to={'/create-post'}>
                 <Button type='button' gradientDuoTone='purpleToPink' disabled={loading||imageFileUploading}
                 className='w-full'>
-                  Create a post
+                  Tạo bài viết mới
                 </Button>
               </Link>
               
             )}
         </form>
         <div className='text-red-500 flex justify-between mt-5'>
-            <span className='cursor-pointer' onClick={() => setShowModal(true)}>Delete Account</span>
-            <span className='cursor-pointer' onClick={handleSignout}>Sign Out</span>
+            <span className='cursor-pointer' onClick={() => setShowModal(true)}>Xóa tài khoản</span>
+            <span className='cursor-pointer' onClick={handleSignout}>Đăng xuất</span>
         </div>
         {updateUserSuccess && (
           <Alert color='success' className='mt-5'>

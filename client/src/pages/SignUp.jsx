@@ -50,22 +50,22 @@ export default function SignUp() {
               <span className='py-1 text-buttextlight font-lobster dark:text-buttextdark'>But</span>kechuyen
           </Link>
           <p className='text-md mt-5 font-philosopher'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos quas quis enim autem quaerat esse laudantium repellendus, ut quidem est nihil dicta reprehenderit laboriosam similique sint ullam unde hic.
+          " chúng ta đều đến với thế giới này để yêu thương, và để được yêu thương. "
           </p>
         </div>
         {/* right */}
         <div className='flex-1'>
           <form action="" className='flex flex-col gap-4' onSubmit={handleSubmit}>
             <div className=''>
-              <Label value='Your username' />
+              <Label value='Tên người dùng' />
               <TextInput 
                 type='text'
-                placeholder='Username'
+                placeholder='Tên người dùng'
                 id='username'
                 onChange={handleChange}/>
             </div>
             <div className=''>
-              <Label value='Your email' />
+              <Label value='Email' />
               <TextInput 
                 type='text'
                 placeholder='Email'
@@ -73,10 +73,10 @@ export default function SignUp() {
                 onChange={handleChange}/>
             </div>
             <div className=''>
-              <Label value='Your password' />
+              <Label value='Mật khẩu' />
               <TextInput 
                 type='password'
-                placeholder='Password'
+                placeholder='Mật khẩu'
                 id='password'
                 onChange={handleChange}/>
             </div>
@@ -88,14 +88,14 @@ export default function SignUp() {
                     <Spinner size='sm' color='pink' />
                     <span className='pl-3'>Loading...</span>
                   </>
-                ) : 'Sign Up'
+                ) : 'Đăng kí'
               }
             </Button>
             <OAuth />
           </form>
           <div className='flex gap-2 text-sm mt-5'>
-            <span>Have an account?</span>
-            <Link to='/sign-in' className='text-blue-500'>Sign In</Link>
+            <span>Đã có tài khoản?</span>
+            <Link to='/sign-in' className='text-blue-500'>Đăng nhập</Link>
           </div>
           {
             errorMessage && (
