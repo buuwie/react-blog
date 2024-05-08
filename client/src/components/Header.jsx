@@ -1,6 +1,6 @@
 import React from 'react'
 import { Avatar, Button, Dropdown, DropdownDivider, DropdownHeader, DropdownItem, Navbar, NavbarCollapse, NavbarLink, NavbarToggle, TextInput } from 'flowbite-react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
@@ -10,6 +10,7 @@ import { signoutSuccess } from '../redux/user/userSlice'
 export default function Header() {
     const {currentUser} = useSelector((state) => state.user)
     const {theme} = useSelector((state) => state.theme)
+    const navigate = useNavigate();
     const dispatch = useDispatch()
     const path = useLocation().pathname;
     const handleSignout = async () => {
@@ -22,6 +23,7 @@ export default function Header() {
             console.log(data.message);
           } else {
             dispatch(signoutSuccess());
+            navigate('/sign-in')
           }
         } catch (error) {
           console.log(error.message);
@@ -76,18 +78,18 @@ export default function Header() {
             <NavbarToggle />
         </div>
         <NavbarCollapse>
-            <NavbarLink href='/' as={'div'}>
-                <Link to='/'>
+            <NavbarLink href='/' active={path === '/'} as={'div'} className='font-semibold'>
+                <Link to='/' style={{ color: path === '/' ? '#009fcb' : 'inherit' }}>
                     Home
                 </Link>
             </NavbarLink>
-            <NavbarLink href='/about' as={'div'}>
-                <Link to='/about'>
+            <NavbarLink href='/about' active={path === '/about'} as={'div'} className='font-semibold'>
+                <Link to='/about' style={{ color: path === '/about' ? '#009fcb' : 'inherit' }}>
                     About
                 </Link>
             </NavbarLink>
-            <NavbarLink href='/projects' as={'div'}>
-                <Link to='/projects'>
+            <NavbarLink href='/projects' active={path === '/projects'} as={'div'} className='font-semibold'>
+                <Link to='/projects' style={{ color: path === '/projects' ? '#009fcb' : 'inherit' }}>
                     Projects
                 </Link>
             </NavbarLink>
