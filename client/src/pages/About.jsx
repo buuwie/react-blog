@@ -1,3 +1,5 @@
+import FacebookChat from "../components/FacebookChat";
+
 export default function About() {
   return (
     <div className='min-h-screen flex items-center justify-center'>
@@ -36,6 +38,7 @@ export default function About() {
           </div>
         </div>
       </div>
+      <FacebookChat />
     </div>
   );
 }
