@@ -3,11 +3,16 @@ import { errorHandler } from '../utils/error.js';
 
 export const create = async (req, res, next) => {
     if (!req.user.isAdmin) {
-        return next(errorHandler(403, 'You are not allowed to create a post'));
+        return next(errorHandler(403, 'Bạn không được phép tạo bài viết mới'));
       }
       if (!req.body.title || !req.body.content) {
-        return next(errorHandler(400, 'Please provide all required fields'));
+        return next(errorHandler(400, 'Vui lòng nhập đầy đủ tiêu đề và nội dung bài viết'));
       }
+      if (req.body.title) {
+        const existingTitle = await Post.findOne({title: req.body.title})
+        if (existingTitle) return next(errorHandler(400, 'Tiêu đề này đã tồn tại'))
+      } 
+    
       const slug = req.body.title
         .split(' ')
         .join('-')
@@ -24,13 +29,14 @@ export const create = async (req, res, next) => {
       } catch (error) {
         next(error);
       }
+      
 }
 
 export const getPosts = async (req, res, next) => {
     try {
         const startIndex = parseInt(req.query.startIndex) || 0;
         const limit = parseInt(req.query.limit) || 9;
-        const sortDirection = req.query.order === 'asc' ? 1 : -1;
+        const sortDirection = req.query.sort === 'asc' ? 1 : -1;
         const posts = await Post.find({
         ...(req.query.userId && { userId: req.query.userId }),
         ...(req.query.category && { category: req.query.category }),
@@ -74,21 +80,72 @@ export const getPosts = async (req, res, next) => {
 
 export const deletepost = async (req, res, next) => {
     if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-      return next(errorHandler(403, 'You are not allowed to delete this post'));
+      return next(errorHandler(403, 'Bạn không có quyền xóa bài viết này'));
     }
     try {
       await Post.findByIdAndDelete(req.params.postId);
-      res.status(200).json('The post has been deleted');
+      res.status(200).json('Bài viết đã được xóa');
     } catch (error) {
       next(error);
     }
   };
+
+export const getRandomPostsByCategory = async (req, res, next) => {
+  try {
+    const category = req.query.category
+    const limit = parseInt(req.query.limit) || 3; // Số lượng bài viết ngẫu nhiên cần lấy, mặc định là 5
+    const matchStage = category ? { $match: { category } } : null;
+    const sampleStage = { $sample: { size: limit } };
+
+    const pipeline = [];
+    if (matchStage) pipeline.push(matchStage);
+    pipeline.push(sampleStage);
+
+    const randomPostsByCategory = await Post.aggregate(pipeline);
+
+    res.status(200).json({
+      randomPostsByCategory,
+    });
+
+  } catch (error) {
+      next(error);
+  }
+}
+
+export const getRandomPosts = async (req, res, next) => {
+  try {
+    const limit = parseInt(req.query.limit) || 3; // Số lượng bài viết ngẫu nhiên cần lấy, mặc định là 5
+
+    const randomPosts = await Post.aggregate([
+      { $sample: { size: limit } }
+  ]);
+
+    res.status(200).json({
+      randomPosts,
+    });
+
+  } catch (error) {
+      next(error);
+  }
+}
   
   export const updatepost = async (req, res, next) => {
     if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-      return next(errorHandler(403, 'You are not allowed to update this post'));
+      return next(errorHandler(403, 'Bạn không có quyền chỉnh sửa bài viết này'));
     }
     try {
+      const currentPost = await Post.findById(req.params.postId);
+      if (!currentPost) {
+        return next(errorHandler(404, 'Bài viết không tồn tại'));
+      }
+
+      // Check if title has changed
+      if (req.body.title && req.body.title !== currentPost.title) {
+        const existingTitle = await Post.findOne({ title: req.body.title });
+        if (existingTitle) {
+          return next(errorHandler(400, 'Tiêu đề này đã tồn tại'));
+        }
+      }
       const updatedPost = await Post.findByIdAndUpdate(
         req.params.postId,
         {

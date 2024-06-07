@@ -13,6 +13,7 @@ export default function DashComments() {
   const [showModal, setShowModal] = useState(false);
   const [commentIdToDelete, setCommentIdToDelete] = useState('');
   useEffect(() => {
+    document.title = 'Quản lý bình luận - Bụt kể chuyện'
     const fetchComments = async () => {
       try {
         const res = await fetch(`/api/comment/getcomments`);
@@ -74,11 +75,11 @@ export default function DashComments() {
   };
 
   return (
-    <div className='table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
+    <div className='table-auto font-semibold overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-gray-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-gray-500'>
       {currentUser.isAdmin && comments.length > 0 ? (
         <>
           <Table hoverable className='shadow-md'>
-            <TableHead>
+            <TableHead className='font-philosopher'>
               <TableHeadCell>Ngày chỉnh sửa</TableHeadCell>
               <TableHeadCell>Lời bình luận</TableHeadCell>
               <TableHeadCell>Lượt thích</TableHeadCell>
@@ -87,7 +88,7 @@ export default function DashComments() {
               <TableHeadCell>Tác vụ</TableHeadCell>
             </TableHead>
             {comments.map((comment) => (
-              <TableBody className='divide-y' key={comment._id}>
+              <TableBody className='divide-y font-bellota' key={comment._id}>
                 <TableRow className='bg-white dark:border-gray-700 dark:bg-gray-800'>
                   <TableCell>
                     {new Date(comment.updatedAt).toLocaleDateString()}
@@ -114,14 +115,14 @@ export default function DashComments() {
           {showMore && (
             <button
               onClick={handleShowMore}
-              className='w-full text-teal-500 self-center text-sm py-7'
+              className='w-full text-teal-500 self-center text-sm py-7 font-lora'
             >
               Hiển thị thêm
             </button>
           )}
         </>
       ) : (
-        <p>Bạn chưa có bình luận nào!</p>
+        <p className='font-lora font-semibold'>Bạn chưa có bình luận nào!</p>
       )}
       <Modal
         show={showModal}

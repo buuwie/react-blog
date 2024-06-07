@@ -17,12 +17,10 @@ const postSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      default:
-        'https://i.pinimg.com/originals/8d/f4/8e/8df48e8eb06eb2a8e2bf36a178e4dd32.jpg',
     },
     category: {
       type: String,
-      default: 'uncategorized',
+      default: 'random',
     },
     slug: {
       type: String,

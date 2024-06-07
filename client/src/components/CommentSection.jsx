@@ -56,7 +56,7 @@ export default function CommentSection({ postId }) {
     getComments();
   }, [postId]);
 
-  const handleLike = async (commentId) => {
+  const handleLikeComment = async (commentId) => {
     try {
       if (!currentUser) {
         navigate('/sign-in');
@@ -113,7 +113,7 @@ export default function CommentSection({ postId }) {
   return (
     <div className='max-w-2xl mx-auto w-full p-3'>
       {currentUser ? (
-        <div className='flex items-center gap-1 my-5 text-gray-500 text-sm'>
+        <div className='flex items-center gap-1 my-5 text-gray-600 dark:text-gray-400 text-sm font-merriweather'>
           <p>Bình luận với tên:</p>
           <img
             className='h-5 w-5 object-cover rounded-full'
@@ -128,10 +128,10 @@ export default function CommentSection({ postId }) {
           </Link>
         </div>
       ) : (
-        <div className='text-sm text-teal-500 my-5 flex gap-1'>
+        <div className='font-merriweather text-sm text-gray-600 dark:text-kechuyentextlight my-5 flex gap-1'>
           Bạn phải đăng nhập để bình luận.
-          <Link className='text-blue-500 hover:underline' to={'/sign-in'}>
-            Sign In
+          <Link className='dark:text-blue-500 text-blue-700 hover:underline' to={'/sign-in'}>
+            Đăng nhập
           </Link>
         </div>
       )}
@@ -146,12 +146,13 @@ export default function CommentSection({ postId }) {
             maxLength='200'
             onChange={(e) => setComment(e.target.value)}
             value={comment}
+            className='font-lora'
           />
           <div className='flex justify-between items-center mt-5'>
-            <p className='text-gray-500 text-xs'>
+            <p className='dark:text-gray-300 text-gray-600 text-xs font-lora'>
               {200 - comment.length} kí tự còn lại
             </p>
-            <Button outline gradientDuoTone='purpleToBlue' type='submit'>
+            <Button outline gradientDuoTone='purpleToBlue' type='submit' className='font-lora font-semibold'>
               Bình luận
             </Button>
           </div>
@@ -163,10 +164,10 @@ export default function CommentSection({ postId }) {
         </form>
       )}
       {comments.length === 0 ? (
-        <p className='text-sm my-5'>Chưa có bình luận nha!</p>
+        <p className='text-sm my-5 font-merriweather'>Chưa có bình luận nha!</p>
       ) : (
         <>
-          <div className='text-sm my-5 flex items-center gap-1'>
+          <div className='text-sm my-5 flex items-center gap-1 font-lora'>
             <p>Bình luận</p>
             <div className='border border-gray-400 py-1 px-2 rounded-sm'>
               <p>{comments.length}</p>
@@ -176,7 +177,7 @@ export default function CommentSection({ postId }) {
             <Comment
               key={comment._id}
               comment={comment}
-              onLike={handleLike}
+              onLike={handleLikeComment}
               onEdit={handleEdit}
               onDelete={(commentId) => {
                 setShowModal(true);

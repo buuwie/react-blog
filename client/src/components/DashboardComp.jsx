@@ -72,12 +72,12 @@ export default function DashboardComp() {
         <div className='flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md'>
           <div className='flex justify-between'>
             <div className=''>
-              <h3 className='text-gray-500 text-md uppercase'>Tổng số người dùng</h3>
-              <p className='text-2xl'>{totalUsers}</p>
+              <h3 className='text-gray-500 text-md uppercase font-courier font-semibold'>Tổng số người dùng</h3>
+              <p className='text-2xl font-poetsen-one font-semibold'>{totalUsers}</p>
             </div>
             <HiOutlineUserGroup className='bg-teal-600  text-white rounded-full text-5xl p-3 shadow-lg' />
           </div>
-          <div className='flex  gap-2 text-sm'>
+          <div className='flex  gap-2 text-sm font-courier font-semibold'>
             <span className='text-green-500 flex items-center'>
               <HiArrowNarrowUp />
               {lastMonthUsers}
@@ -88,14 +88,14 @@ export default function DashboardComp() {
         <div className='flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md'>
           <div className='flex justify-between'>
             <div className=''>
-              <h3 className='text-gray-500 text-md uppercase'>
+              <h3 className='text-gray-500 text-md uppercase font-courier font-semibold'>
                 Tổng số bình luận
               </h3>
-              <p className='text-2xl'>{totalComments}</p>
+              <p className='text-2xl font-poetsen-one font-semibold'>{totalComments}</p>
             </div>
             <HiAnnotation className='bg-indigo-600  text-white rounded-full text-5xl p-3 shadow-lg' />
           </div>
-          <div className='flex  gap-2 text-sm'>
+          <div className='flex  gap-2 text-sm font-courier font-semibold'>
             <span className='text-green-500 flex items-center'>
               <HiArrowNarrowUp />
               {lastMonthComments}
@@ -106,12 +106,12 @@ export default function DashboardComp() {
         <div className='flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md'>
           <div className='flex justify-between'>
             <div className=''>
-              <h3 className='text-gray-500 text-md uppercase'>Tổng số bài viết</h3>
-              <p className='text-2xl'>{totalPosts}</p>
+              <h3 className='text-gray-500 text-md uppercase font-courier font-semibold'>Tổng số bài viết</h3>
+              <p className='text-2xl font-poetsen-one'>{totalPosts}</p>
             </div>
-            <HiDocumentText className='bg-lime-600  text-white rounded-full text-5xl p-3 shadow-lg' />
+            <HiDocumentText className='bg-gray-500 text-white rounded-full text-5xl p-3 shadow-lg' />
           </div>
-          <div className='flex  gap-2 text-sm'>
+          <div className='flex  gap-2 text-sm font-courier font-semibold'>
             <span className='text-green-500 flex items-center'>
               <HiArrowNarrowUp />
               {lastMonthPosts}
@@ -120,16 +120,16 @@ export default function DashboardComp() {
           </div>
         </div>
       </div>
-      <div className='flex flex-wrap gap-4 py-3 mx-auto justify-center'>
+      <div className='flex flex-wrap gap-4 py-3 mx-auto justify-center font-semibold'>
         <div className='flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800'>
           <div className='flex justify-between  p-3 text-sm font-semibold'>
-            <h1 className='text-center p-2'>Người dùng gần đây</h1>
+            <h1 className='text-center p-2 font-lora'>Người dùng gần đây</h1>
             <Button outline gradientDuoTone='purpleToPink'>
-              <Link to={'/dashboard?tab=users'}>Xem tất cả</Link>
+              <Link to={'/dashboard?tab=users'} className='font-lora font-semibold'>Xem tất cả</Link>
             </Button>
           </div>
           <Table hoverable>
-            <Table.Head>
+            <Table.Head className='font-philosopher'>
               <Table.HeadCell>Avatar</Table.HeadCell>
               <Table.HeadCell>Tên người dùng</Table.HeadCell>
             </Table.Head>
@@ -144,7 +144,7 @@ export default function DashboardComp() {
                         className='w-10 h-10 rounded-full bg-gray-500'
                       />
                     </Table.Cell>
-                    <Table.Cell>{user.username}</Table.Cell>
+                    <Table.Cell className='font-bellota'>{user.username}</Table.Cell>
                   </Table.Row>
                 </Table.Body>
               ))}
@@ -152,19 +152,19 @@ export default function DashboardComp() {
         </div>
         <div className='flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800'>
           <div className='flex justify-between  p-3 text-sm font-semibold'>
-            <h1 className='text-center p-2'>Bình luận gần đây</h1>
+            <h1 className='text-center p-2 font-lora'>Bình luận gần đây</h1>
             <Button outline gradientDuoTone='purpleToPink'>
-              <Link to={'/dashboard?tab=comments'}>Xem tất cả</Link>
+              <Link to={'/dashboard?tab=comments'} className='font-lora font-semibold'>Xem tất cả</Link>
             </Button>
           </div>
           <Table hoverable>
-            <Table.Head>
+            <Table.Head className='font-philosopher'>
               <Table.HeadCell>Lời bình luận</Table.HeadCell>
               <Table.HeadCell>Lượt thích</Table.HeadCell>
             </Table.Head>
             {comments &&
               comments.map((comment) => (
-                <Table.Body key={comment._id} className='divide-y'>
+                <Table.Body key={comment._id} className='divide-y font-bellota'>
                   <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
                     <Table.Cell className='w-96'>
                         <p className='line-clamp-2'>{comment.content}</p>
@@ -177,25 +177,24 @@ export default function DashboardComp() {
         </div>
         <div className='flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800'>
           <div className='flex justify-between  p-3 text-sm font-semibold'>
-            <h1 className='text-center p-2'>Bài viết gần đây</h1>
+            <h1 className='text-center p-2 font-lora'>Bài viết gần đây</h1>
             <Button outline gradientDuoTone='purpleToPink'>
-              <Link to={'/dashboard?tab=posts'}>Xem tất cả</Link>
+              <Link to={'/dashboard?tab=posts'} className='font-lora font-semibold'>Xem tất cả</Link>
             </Button>
           </div>
           <Table hoverable>
-            <Table.Head>
+            <Table.Head className='font-philosopher'>
               <Table.HeadCell>Thumbnail</Table.HeadCell>
               <Table.HeadCell>Tiêu đề</Table.HeadCell>
               <Table.HeadCell>Chủ đề</Table.HeadCell>
             </Table.Head>
             {posts &&
               posts.map((post) => (
-                <Table.Body key={post._id} className='divide-y'>
+                <Table.Body key={post._id} className='divide-y font-bellota'>
                   <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
                     <Table.Cell>
                       <img
-                        src={post.image}
-                        alt='user'
+                        src={post.image ?? 'https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/1715210620746270784039_3078232489054877_4577822641455101192_n.jpg?alt=media&token=2c8480a7-81ed-48a8-ba35-9b65f7474bbb'}
                         className='w-14 h-10 rounded-md bg-gray-500'
                       />
                     </Table.Cell>

@@ -31,11 +31,12 @@ export default function DashProfile() {
             setImageFile(file);
             setImageFileUrl(URL.createObjectURL(file))
           }
-          else setImageFileUploadError('File must be an image') 
+          else setImageFileUploadError('File tải lên phải là ảnh (jpg, jpeg, png,...)') 
         }
     }
     
     useEffect(() => {
+      document.title = 'Trang cá nhân - Bụt kể chuyện'
         if (imageFile) {
             uploadImage();
         }
@@ -70,7 +71,7 @@ export default function DashProfile() {
           },
           (error) => {
             setImageFileUploadError(
-              'Could not upload image (File must be less than 2MB)'
+              'Không thể tải ảnh lên (ảnh không được lớn hơn 5MB)'
             );
             setImageFileUploadProgress(null);
             setImageFileUploading(false);
@@ -95,7 +96,7 @@ export default function DashProfile() {
       setUpdateUserError(null);
       setUpdateUserSuccess(null);
       if (Object.keys(formData).length === 0) {
-        setUpdateUserError('No changes made');
+        setUpdateUserError('Bạn chưa có thay đổi gì mà');
         return;
       }
       try {
@@ -113,7 +114,7 @@ export default function DashProfile() {
           setUpdateUserError(data.message);
         } else {
           dispatch(updateSuccess(data));
-          setUpdateUserSuccess("User profile updated successfully");
+          setUpdateUserSuccess("Cập nhật thông tin thành công");
           setImageFileUploadProgress(null)
         }
       } catch (error) {
@@ -158,7 +159,7 @@ export default function DashProfile() {
 
   return (
     <div className='max-w-lg mx-auto p-3 w-full'>
-        <h1 className='my-7 text-center font-semibold text-3xl'>Trang cá nhân</h1>
+        <h1 className='my-7 text-center font-semibold text-3xl font-lobster'>Trang cá nhân</h1>
         <form action="" onSubmit={handleSubmit} className='flex flex-col gap-4'>
             <input hidden type="file" accept='image/*' onChange={handleImageChange} ref={filePickerRef} />
             <div className='w-32 h-32 self-center cursor-pointer shadow-md overflow-hidden rounded-full relative'
@@ -191,28 +192,20 @@ export default function DashProfile() {
             {imageFileUploadError && (
                 <Alert color='failure'>{imageFileUploadError}</Alert>
             )}
-            <TextInput type='text' id='username' placeholder='Username'
+            <TextInput type='text' id='username' placeholder='Tên người dùng' className='font-bellota font-semibold'
             defaultValue={currentUser.username} onChange={handleChange}/>
-            <TextInput type='email' id='email' placeholder='Email' disabled
+            <TextInput type='email' id='email' placeholder='Email' disabled className='font-bellota font-semibold'
             defaultValue={currentUser.email} onChange={handleChange}/>
-            <TextInput type='password' id='password' placeholder='Password' onChange={handleChange}/>
-            <Button type='submit' gradientDuoTone='purpleToBlue' outline
+            <TextInput type='password' id='password' placeholder='Mật khẩu' className='font-bellota font-semibold' onChange={handleChange}/>
+            <Button type='submit' gradientDuoTone='purpleToBlue' outline className='font-lora font-semibold'
             disabled={loading || imageFileUploading}>
                 {loading ? 'Loading...' : 'Cập nhật'}
             </Button>
-            {currentUser.isAdmin && (
-              <Link to={'/create-post'}>
-                <Button type='button' gradientDuoTone='purpleToPink' disabled={loading||imageFileUploading}
-                className='w-full'>
-                  Tạo bài viết mới
-                </Button>
-              </Link>
-              
-            )}
+            
         </form>
         <div className='text-red-500 flex justify-between mt-5'>
-            <span className='cursor-pointer' onClick={() => setShowModal(true)}>Xóa tài khoản</span>
-            <span className='cursor-pointer' onClick={handleSignout}>Đăng xuất</span>
+            <span className='cursor-pointer font-lora font-semibold' onClick={() => setShowModal(true)}>Xóa tài khoản</span>
+            <span className='cursor-pointer font-lora font-semibold' onClick={handleSignout}>Đăng xuất</span>
         </div>
         {updateUserSuccess && (
           <Alert color='success' className='mt-5'>
@@ -224,11 +217,11 @@ export default function DashProfile() {
             {updateUserError}
           </Alert>
         )}
-        {error && (
+        {/* {error && (
           <Alert color='failure' className='mt-5'>
             {error}
           </Alert>
-        )}
+        )} */}
         <Modal
           show={showModal}
           onClose={() => setShowModal(false)}
@@ -240,14 +233,14 @@ export default function DashProfile() {
             <div className='text-center'>
               <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
               <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
-                Are you sure you want to delete your account?
+                Bạn có chắc muốn xóa tài khoản của bạn?
               </h3>
               <div className='flex justify-center gap-4'>
                 <Button color='failure' onClick={handleDeleteUser}>
-                  Yes, I'm sure
+                  Có, tôi chắc chắn
                 </Button>
                 <Button color='gray' onClick={() => setShowModal(false)}>
-                  No, cancel
+                  Không, tôi muốn hủy
                 </Button>
               </div>
             </div>

@@ -13,6 +13,7 @@ export default function Header() {
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch()
+    const location = useLocation();
     const path = useLocation().pathname;
 
     useEffect(() => {
@@ -22,6 +23,15 @@ export default function Header() {
           setSearchTerm(searchTermFromUrl);
         }
     }, [location.search]);
+
+    const handleIconClick = () => {
+        navigate('/search');
+      };
+
+    const handleLoginClick = () => {
+        // console.log('Navigating to login from:', location.pathname);
+        navigate('/sign-in', { state: { origin: location.pathname } });
+    }
     
     const handleSignout = async () => {
         try {
@@ -49,8 +59,8 @@ export default function Header() {
     };
 
   return (
-    <Navbar className="border-b-2 bg-[url('https://i.pinimg.com/564x/dc/b4/7e/dcb47e8d388c483c36c6e0ffd1585bd3.jpg')] bg-no-repeat bg-cover">
-        <Link to="/" className='self-center whitespace-nowrap text-kechuyentextlight text-sm sm:text-3xl
+    <Navbar className="border-b-2 bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/config%20images%2Fhinh-anh-mua-sao-bang-dep-nhat-37.jpg?alt=media&token=fd250cc8-8bfe-4a71-895a-6deeb2e29439')] bg-no-repeat bg-cover">
+        <Link to="/" className='self-center whitespace-nowrap text-kechuyentextlight text-lg sm:text-3xl
         font-semibold dark:text-white font-lobster'>
             <span className='py-1 text-buttextlight font-lobster dark:text-buttextdark'>But</span>kechuyen
         </Link>
@@ -59,61 +69,81 @@ export default function Header() {
                 type='text'
                 placeholder='Tìm kiếm...'
                 rightIcon={AiOutlineSearch}
-                className='hidden lg:inline'
+                className='hidden lg:inline font-bellota font-semibold'
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
         </form>
         <Button className='w-12 h-10 lg:hidden' color='gray' pill>
-            <AiOutlineSearch />
+            <AiOutlineSearch onClick={handleIconClick} />
         </Button>
         <div className='flex gap-2 md:order-2'>
-            <Button className='w-12 h-10 hidden sm:inline' color='gray' pill
+            <Button className='w-12 h-10 sm:inline' color='gray' pill
             onClick={() => dispatch(toggleTheme())}>
-                {theme === 'dark' ? <FaSun /> : <FaMoon />}
+                {theme === 'light' || !theme ? <FaSun /> : <FaMoon />}
             </Button>
             {currentUser ? (
                 <Dropdown arrowIcon={false} inline label={
                     <Avatar alt='user' img={currentUser.profilePicture} rounded />
                 }>
                     <DropdownHeader>
-                        <span className='block text-sm'>@{currentUser.username}</span>
-                        <span className='block text-sm font-medium truncate'>{currentUser.email}</span>
+                        <span className='block text-sm font-poetsen-one'>@{currentUser.username}</span>
+                        <span className='block text-sm font-medium font-comic truncate'>{currentUser.email}</span>
                     </DropdownHeader>
-                    <Link to={'/dashboard/?tab=profile'}>
-                        <DropdownItem>Cá nhân</DropdownItem>
-                    </Link>
+                    {currentUser.isAdmin ? (
+                        <Link to={'/dashboard?tab=main'}>
+                            <DropdownItem className='font-bellota font-semibold'>Dashboard</DropdownItem>
+                        </Link>
+                    ) : (
+                        <Link to={'/dashboard?tab=profile'}>
+                            <DropdownItem className='font-bellota font-semibold'>Cá nhân</DropdownItem>
+                        </Link>
+                    )}
+                    <DropdownDivider/>
+                    {currentUser.isAdmin && (
+                        <>
+                            <Link to={'/create-post'}>
+                                <DropdownItem className='font-bellota font-semibold'>Tạo bài viết mới</DropdownItem>
+                            </Link>
+                        </>
+                    )}
                     <DropdownDivider />
-                    <DropdownItem onClick={handleSignout}>Đăng xuất</DropdownItem>
+                    <DropdownItem onClick={handleSignout} className='font-bellota font-semibold'>Đăng xuất</DropdownItem>
                 </Dropdown>
             ):
             (
-                <Link to='/sign-in'>
-                    <Button gradientDuoTone='purpleToBlue' className='hover:text-white' outline>
-                        Đăng nhập
-                    </Button>
-                </Link>
+                
+                <Button gradientDuoTone='purpleToBlue' className='hover:text-white' outline onClick={handleLoginClick}>
+                    Đăng nhập
+                </Button>
             )
             }
             
             <NavbarToggle />
         </div>
         <NavbarCollapse>
-            <NavbarLink href='/' active={path === '/'} as={'div'} className='font-semibold'>
-                <Link to='/' style={{ color: path === '/' ? '#009fcb' : 'inherit' }}>
-                    Trang chủ
-                </Link>
-            </NavbarLink>
-            <NavbarLink href='/about' active={path === '/about'} as={'div'} className='font-semibold'>
-                <Link to='/about' style={{ color: path === '/about' ? '#009fcb' : 'inherit' }}>
-                    Giới thiệu
-                </Link>
-            </NavbarLink>
-            <NavbarLink href='/search' active={path === '/search'} as={'div'} className='font-semibold'>
-                <Link to='/search' style={{ color: path === '/search' ? '#009fcb' : 'inherit' }}>
-                    Bài viết
-                </Link>
-            </NavbarLink>
+            <Link to='/'>
+                <NavbarLink active={path === '/'} as={'div'} className='font-semibold text-kechuyentextlight font-philosopher text-lg'>
+                    <Link to='/' style={{ color: path === '/' ? '#05f7ff' : 'inherit' }}>
+                        Trang chủ
+                    </Link>
+                </NavbarLink>
+            </Link>
+            <Link to='/about'>
+                <NavbarLink active={path === '/about'} as={'div'} className='font-semibold text-kechuyentextlight font-philosopher text-lg'>
+                    <Link to='/about' style={{ color: path === '/about' ? '#05f7ff' : 'inherit' }}>
+                        Giới thiệu
+                    </Link>
+                </NavbarLink>
+            </Link>
+            <Link to='/search'>
+                <NavbarLink active={path === '/search'} as={'div'} className='font-semibold text-kechuyentextlight font-philosopher text-lg'>
+                    <Link to='/search' style={{ color: path === '/search' ? '#05f7ff' : 'inherit' }}>
+                        Bài viết
+                    </Link>
+                </NavbarLink>
+            </Link>
+            
         </NavbarCollapse>
     </Navbar>
   )

@@ -12,11 +12,11 @@ const firebaseConfig = {
   // messagingSenderId: "302814475944",
   // appId: "1:302814475944:web:1a8f678be95d3fceb2b49d"
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "reactblog-c896c.firebaseapp.com",
-  projectId: "reactblog-c896c",
-  storageBucket: "reactblog-c896c.appspot.com",
-  messagingSenderId: "895210511236",
-  appId: "1:895210511236:web:9ce6fc78e3a1b4264c1bd1"
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 // Initialize Firebase

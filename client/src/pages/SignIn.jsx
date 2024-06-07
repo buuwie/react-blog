@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Label, TextInput, Button, Alert, Spinner } from 'flowbite-react'
 import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,13 +7,26 @@ import OAuth from '../components/OAuth';
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
-  const {loading, error: errorMessage} = useSelector(state => state.user);
+  const { currentUser, loading, error: errorMessage} = useSelector(state => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
+  
+  useEffect(() => {
+    document.title = 'Đăng nhập - Bụt kể chuyện'
+    if (currentUser) {
+      if (from !== '/' && from !== '/sign-in') {
+        navigate(from);
+      }
+      else navigate('/')
+    }
+  }, [currentUser, navigate]);
 
+  const from = location.state?.origin || '/';
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
@@ -38,6 +51,7 @@ export default function SignIn() {
       dispatch(signInFailure(error.message));
     }
   };
+
   return (
     <div className='min-h-screen mt-20'>
       <div className='flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center

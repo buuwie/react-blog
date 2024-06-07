@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { HiUser, HiArrowSmRight, HiDocumentText, HiChartPie, HiOutlineUserGroup, HiAnnotation } from 'react-icons/hi'
+import { HiUser, HiArrowSmRight, HiDocumentText, HiChartPie, HiOutlineUserGroup, HiAnnotation, HiPencilAlt } from 'react-icons/hi'
 import { Link, useLocation } from 'react-router-dom'
 import { Sidebar, SidebarItem, SidebarItemGroup, SidebarItems } from 'flowbite-react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -33,7 +33,7 @@ export default function DashSidebar() {
     }
   };
   return (
-    <Sidebar className='w-full md:w-56'>
+    <Sidebar className='w-full md:w-56 font-philosopher'>
         <SidebarItems>
             <SidebarItemGroup className='flex flex-col gap-1'>
                 {currentUser && currentUser.isAdmin && (
@@ -84,6 +84,15 @@ export default function DashSidebar() {
                       </SidebarItem>
                     </Link>
                   </>
+                )}
+                {currentUser.isAdmin && (
+                  <Link to='/create-post'>
+                    <SidebarItem
+                      icon={HiPencilAlt}
+                    >
+                      Tạo bài viết mới
+                    </SidebarItem>
+                  </Link>
                 )}
                 <SidebarItem onClick={handleSignout} icon={HiArrowSmRight} className='cursor-pointer'>
                     Đăng xuất

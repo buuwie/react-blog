@@ -2,35 +2,35 @@ import { errorHandler } from "../utils/error.js";
 import bcryptjs from 'bcryptjs';
 import User from "../models/user.model.js";
 
-export const test = (req, res) => {
-    res.json({message: 'Api is working!'});
-};
-
 export const updateUser = async (req, res, next) => {
     if (req.user.id !== req.params.userId) {
-        return next(errorHandler(403, 'You are not allowed to update this user'));
-    }
-    if (req.body.password) {
-        if (req.body.password.length < 6) {
-            return next(errorHandler(400, 'Password must be at least 6 characters'));
-        }
-        req.body.password = bcryptjs.hashSync(req.body.password, 10);
+        return next(errorHandler(403, 'Bạn không được phép thay đổi thông tin người dùng này'));
     }
     if (req.body.username) {
         if (req.body.username.length < 5 || req.body.username.length > 20) {
-            return next(errorHandler(400, 'Username must be between 5 and 20 characters'));
+            return next(errorHandler(400, 'Tên người dùng phải bao gồm từ 5 đến 20 kí tự'));
         }
         if (req.body.username.includes(' ')) {
-            return next(errorHandler(400, 'Username cannot contains spaces'));
+            return next(errorHandler(400, 'Tên người dùng không bao gồm khoảng trống'));
         }
         if (req.body.username !== req.body.username.toLowerCase()) {
-            return next(errorHandler(400, 'Username must be lowercase'));
+            return next(errorHandler(400, 'Tên người dùng không được in hoa'));
         }
         if (!req.body.username.match(/^[a-zA-Z0-9]+$/)) {
             return next(
-              errorHandler(400, 'Username can only contain letters and numbers')
+              errorHandler(400, 'Tên người dùng chỉ bao gồm chữ cái và số')
             );
         }
+        const existUsername = await User.findOne({username: req.body.username})
+        if (existUsername) {
+          return next(errorHandler(400, 'Tên người dùng này đã tồn tại'))
+        }
+    }
+    if (req.body.password) {
+        if (req.body.password.length < 6) {
+            return next(errorHandler(400, 'Mật khẩu phải bao gồm ít nhất 6 kí tự'));
+        }
+        req.body.password = bcryptjs.hashSync(req.body.password, 10);
     }
     try {
         const updatedUser = await User.findByIdAndUpdate(
@@ -54,11 +54,11 @@ export const updateUser = async (req, res, next) => {
 
 export const deleteUser = async (req, res, next) => {
   if (!req.user.isAdmin && req.user.id !== req.params.userId) {
-    return next(errorHandler(403, 'You are not allowed to delete this user'));
+    return next(errorHandler(403, 'Bạn không được phép xóa người dùng này'));
   }
   try {
     await User.findByIdAndDelete(req.params.userId);
-    res.status(200).json('User has been deleted');
+    res.status(200).json('Người dùng đã được xóa');
   } catch (error) {
     next(error);
   }
@@ -69,7 +69,7 @@ export const signout = (req, res, next) => {
     res
       .clearCookie('access_token')
       .status(200)
-      .json('User has been signed out');
+      .json('Đã đăng xuất');
   } catch (error) {
     next(error);
   }
@@ -77,7 +77,7 @@ export const signout = (req, res, next) => {
 
 export const getUsers = async (req, res, next) => {
   if (!req.user.isAdmin) {
-    return next(errorHandler(403, 'You are not allowed to see all users'));
+    return next(errorHandler(403, 'Bạn không được phép xem thông tin các người dùng'));
   }
   try {
     const startIndex = parseInt(req.query.startIndex) || 0;
@@ -121,7 +121,7 @@ export const getUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.userId);
     if (!user) {
-      return next(errorHandler(404, 'User not found'));
+      return next(errorHandler(404, 'Không tìm thấy người dùng'));
     }
     const { password, ...rest } = user._doc;
     res.status(200).json(rest);

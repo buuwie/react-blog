@@ -13,8 +13,8 @@ export default function DashPosts() {
   const [showMore, setShowMore] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [postIdToDelete, setPostIdToDelete] = useState('');
-  console.log(userPosts);
   useEffect(() => {
+    document.title = 'Quản lý bài viết - Bụt kể chuyện'
     const fetchPosts = async () => {
       try {
         const res = await fetch(`/api/post/getposts?userId=${currentUser._id}`);
@@ -75,11 +75,11 @@ export default function DashPosts() {
   };
 
   return (
-    <div className='table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
+    <div className='table-auto font-semibold overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-gray-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-gray-500'>
       {currentUser.isAdmin && userPosts.length > 0 ? (
         <>
           <Table hoverable className='shadow-md'>
-            <TableHead>
+            <TableHead className='font-philosopher'>
               <TableHeadCell>Lần cuối chỉnh sửa</TableHeadCell>
               <TableHeadCell>Thumbnail</TableHeadCell>
               <TableHeadCell>Tiêu đề</TableHeadCell>
@@ -90,7 +90,7 @@ export default function DashPosts() {
               </TableHeadCell>
             </TableHead>
             {userPosts.map((post) => (
-              <TableBody className='divide-y'>
+              <TableBody className='divide-y font-bellota'>
                 <TableRow className='bg-white dark:border-gray-700 dark:bg-gray-800'>
                   <TableCell>
                     {new Date(post.updatedAt).toLocaleDateString()}
@@ -98,8 +98,8 @@ export default function DashPosts() {
                   <TableCell>
                     <Link to={`/post/${post.slug}`}>
                       <img
-                        src={post.image}
-                        alt={post.title}
+                        src={post.image ?? 'https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/config%20images%2F270784039_3078232489054877_4577822641455101192_n.jpg?alt=media&token=702a9a4c-7e3b-439d-bca7-69c5203f353d'}
+                        
                         className='w-20 h-10 object-cover bg-gray-500'
                       />
                     </Link>
@@ -139,14 +139,14 @@ export default function DashPosts() {
           {showMore && (
             <button
               onClick={handleShowMore}
-              className='w-full text-teal-500 self-center text-sm py-7'
+              className='w-full text-teal-500 self-center text-sm py-7 font-lora'
             >
               Hiển thị thêm
             </button>
           )}
         </>
       ) : (
-        <p>Bạn chưa có bài viết nào!</p>
+        <p className='font-lora font-semibold'>Bạn chưa có bài viết nào!</p>
       )}
       <Modal
         show={showModal}

@@ -11,6 +11,7 @@ export default function DashUsers() {
   const [showModal, setShowModal] = useState(false);
   const [userIdToDelete, setUserIdToDelete] = useState('');
   useEffect(() => {
+    document.title = 'Quản lý người dùng - Bụt kể chuyện'
     const fetchUsers = async () => {
       try {
         const res = await fetch(`/api/user/getusers`);
@@ -64,20 +65,20 @@ export default function DashUsers() {
   };
 
   return (
-    <div className='table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
+    <div className='table-auto font-semibold overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-gray-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-gray-500'>
       {currentUser.isAdmin && users.length > 0 ? (
         <>
-          <Table hoverable className='shadow-md w-full'>
-            <TableHead>
+          <Table hoverable className='shadow-md w-full min-w-[600px]'>
+            <TableHead className='font-philosopher'>
               <TableHeadCell>Ngày tạo</TableHeadCell>
               <TableHeadCell>Avatar</TableHeadCell>
               <TableHeadCell>Tên người dùng</TableHeadCell>
               <TableHeadCell>Email</TableHeadCell>
-              <TableHeadCell>Là Admin</TableHeadCell>
+              <TableHeadCell>Admin</TableHeadCell>
               <TableHeadCell>Tác vụ</TableHeadCell>
             </TableHead>
             {users.map((user) => (
-              <Table.Body className='divide-y' key={user._id}>
+              <Table.Body className='divide-y font-bellota' key={user._id}>
                 <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
                   <Table.Cell>
                     {new Date(user.createdAt).toLocaleDateString()}
@@ -116,14 +117,14 @@ export default function DashUsers() {
           {showMore && (
             <button
               onClick={handleShowMore}
-              className='w-full text-teal-500 self-center text-sm py-7'
+              className='w-full text-teal-500 self-center text-sm py-7 font-lora'
             >
               Hiển thị thêm
             </button>
           )}
         </>
       ) : (
-        <p>Chưa có người dùng nào!</p>
+        <p className='font-lora font-semibold'>Chưa có người dùng nào!</p>
       )}
       <Modal
         show={showModal}
