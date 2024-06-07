@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import CallToAction from '../components/CallToAction';
 import { useEffect, useState } from 'react';
 import HomePostCard from '../components/HomePostCard';
-import FacebookChat from '../components/FacebookChat';
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -64,7 +63,6 @@ export default function Home() {
           </div>
         )}
       </div>
-      <FacebookChat />
     </div>
   );
 }

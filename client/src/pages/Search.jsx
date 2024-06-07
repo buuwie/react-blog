@@ -1,7 +1,6 @@
 import { Button, Select, TextInput } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import FacebookChat from '../components/FacebookChat';
 import SearchPostCard from '../components/SearchPostCard';
 
 export default function Search() {
@@ -193,7 +192,6 @@ export default function Search() {
           )}
         </div>
       </div>
-      <FacebookChat />
     </div>
   );
 }

@@ -4,7 +4,6 @@ import { Link, useParams } from 'react-router-dom';
 import CallToAction from '../components/CallToAction';
 import CommentSection from '../components/CommentSection';
 import PostCard from '../components/PostCard';
-import FacebookChat from '../components/FacebookChat';
 
 export default function PostPage() {
   const { postSlug } = useParams();
@@ -127,7 +126,6 @@ export default function PostPage() {
               Xem tất cả bài viết
             </Link>
         </div>
-        <FacebookChat />
       </div>
     </div>
     

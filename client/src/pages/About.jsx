@@ -1,4 +1,3 @@
-import FacebookChat from "../components/FacebookChat";
 import { useEffect } from "react";
 
 export default function About() {
@@ -47,7 +46,6 @@ export default function About() {
           </div>
         </div>
       </div>
-      <FacebookChat />
     </div>
   );
 }
