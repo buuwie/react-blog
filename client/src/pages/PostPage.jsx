@@ -96,7 +96,7 @@ export default function PostPage() {
         <img
           src={post && post.image}
 
-          className='mt-10 p-3 max-h-[1000px] max-w-[800px] object-cover mx-auto'
+          className='mt-10 p-3 h-full w-full object-cover mx-auto'
         />
         <div className='flex justify-between p-3 border-b border-gray-500 mx-auto w-full max-w-2xl text-xs'>
           <span className='font-courier italic font-semibold'>{post && new Date(post.createdAt).toLocaleDateString('en-GB')}</span>

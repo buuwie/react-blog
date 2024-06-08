@@ -59,7 +59,7 @@ export default function Header() {
     };
 
   return (
-    <Navbar className="border-b-2 bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/config%20images%2Fhinh-anh-mua-sao-bang-dep-nhat-37.jpg?alt=media&token=fd250cc8-8bfe-4a71-895a-6deeb2e29439')] bg-no-repeat bg-cover">
+    <Navbar className="border-b-2 bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/config%20images%2Fhinh-anh-mua-sao-bang-dep-nhat-37-header.jpg?alt=media&token=75647ba2-71fb-417b-b536-14e5b9dc11a3')] bg-no-repeat bg-cover">
         <Link to="/" className='self-center whitespace-nowrap text-kechuyentextlight text-lg sm:text-3xl
         font-semibold dark:text-white font-lobster'>
             <span className='py-1 text-buttextlight font-lobster dark:text-buttextdark'>But</span>kechuyen
@@ -77,7 +77,7 @@ export default function Header() {
         <Button className='w-12 h-10 lg:hidden' color='gray' pill>
             <AiOutlineSearch onClick={handleIconClick} />
         </Button>
-        <div className='flex gap-2 md:order-2'>
+        <div className='flex header-buttons flex-row justify-between items-center gap-2 md:order-2'>
             <Button className='w-12 h-10 sm:inline' color='gray' pill
             onClick={() => dispatch(toggleTheme())}>
                 {theme === 'light' || !theme ? <FaSun /> : <FaMoon />}

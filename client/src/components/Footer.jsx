@@ -5,7 +5,7 @@ import { BsFacebook, BsInstagram, BsYoutube } from 'react-icons/bs'
 
 export default function FooterCom() {
   return (
-    <Footer container className=" border rounded-b-none border-t-8 border-gray-700 dark:border-teal-500 bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/hinh-anh-mua-sao-bang-dep-nhat-37.jpg?alt=media&token=47811694-35c0-4b84-b35a-ed62fb6765c2')] bg-no-repeat bg-cover">
+    <Footer container className=" border rounded-b-none border-t-8 border-gray-700 dark:border-teal-500 bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/config%20images%2Fhinh-anh-mua-sao-bang-dep-nhat-37-footer.jpg?alt=media&token=bdd5edc4-45fe-4a3a-a3c4-b22e2b6de585')] bg-no-repeat bg-cover">
         <div className='w-full max-w-7xl mx-auto'>
             <div className='grid w-full justify-between sm:flex md:grid-cols-1'>
                 <div className='mt-5'>

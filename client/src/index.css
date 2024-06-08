@@ -57,8 +57,18 @@ body {
     
 }
 
-iframe.ql-video {
+.post-content iframe.ql-video {
   width: 100%; /* Set a maximum width */
   height: 600px;     /* Maintain aspect ratio */
-  margin: auto;
+}
+
+@media only screen and (max-width:366px) {
+    .header-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 5px;
+    }
 }
