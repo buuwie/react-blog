@@ -11,7 +11,7 @@ export default function HomePostCard({ post }) {
       </Link>
       <div className='p-3 flex flex-col gap-2'>
         <p className='text-lg font-semibold font-merriweather line-clamp-2'>{post.title}</p>
-        <span className='italic font-comic font-semibold text-sm'>{post.category}</span>
+        <span className='italic font-bellota font-semibold text-sm'>{post.category}</span>
         <Link
           to={`/post/${post.slug}`}
           className='z-10 font-lora group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border dark:border-teal-500 border-gray-500 dark:text-teal-500 text-gray-600 dark:hover:bg-teal-500 hover:text-white hover:bg-gray-600 dark:hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'

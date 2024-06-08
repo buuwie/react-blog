@@ -88,7 +88,7 @@ export default function Header() {
                 }>
                     <DropdownHeader>
                         <span className='block text-sm font-poetsen-one'>@{currentUser.username}</span>
-                        <span className='block text-sm font-medium font-comic truncate'>{currentUser.email}</span>
+                        <span className='block text-sm font-medium font-lora truncate'>{currentUser.email}</span>
                     </DropdownHeader>
                     {currentUser.isAdmin ? (
                         <Link to={'/dashboard?tab=main'}>
@@ -113,7 +113,7 @@ export default function Header() {
             ):
             (
                 
-                <Button gradientDuoTone='purpleToBlue' className='hover:text-white' outline onClick={handleLoginClick}>
+                <Button gradientDuoTone='purpleToBlue' className='hover:text-white font-philosopher font-semibold' outline onClick={handleLoginClick}>
                     Đăng nhập
                 </Button>
             )

@@ -28,7 +28,6 @@ export default function PostPage() {
         if (res.ok) {
           setPost(data.posts[0]);
           document.title = `${data.posts[0].title} - Bụt kể chuyện`
-          console.log(data.posts[0].category)
           setPostCategory(data.posts[0].category)
           setLoading(false);
           setError(false);

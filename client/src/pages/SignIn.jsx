@@ -53,39 +53,39 @@ export default function SignIn() {
   };
 
   return (
-    <div className='min-h-screen mt-20'>
+    <div className="min-h-screen mt-20">
       <div className='flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center
       gap-5'>
         {/* left */}
         <div className='flex-1'>
-          <Link to="/" className=' text-kechuyentextlight text-4xl
-          font-bold dark:text-white font-lobster text-center'>
+          <Link to="/" className='text-4xl
+          font-bold text-white font-lobster text-center'>
               <span className='py-1 text-buttextlight font-lobster dark:text-buttextdark'>But</span>kechuyen
           </Link>
-          <p className='text-md mt-5 font-philosopher'>
+          <p className='text-3xl mt-5 font-square-peg'>
             " chúng ta đều đến với thế giới này để yêu thương, và để được yêu thương. "
           </p>
         </div>
         {/* right */}
         <div className='flex-1'>
           <form action="" className='flex flex-col gap-4' onSubmit={handleSubmit}>
-            <div className=''>
-              <Label value='Email' />
+            <div className=' font-semibold font-bellota'>
+              <Label className='font-semibold font-lora' value='Email' />
               <TextInput 
                 type='email'
                 placeholder='Email'
                 id='email'
                 onChange={handleChange}/>
             </div>
-            <div className=''>
-              <Label value='Mật khẩu' />
+            <div className=' font-semibold font-bellota'>
+              <Label className='font-semibold font-lora' value='Mật khẩu' />
               <TextInput 
                 type='password'
                 placeholder='Mật khẩu'
                 id='password'
                 onChange={handleChange}/>
             </div>
-            <Button gradientDuoTone='purpleToPink' type='submit'
+            <Button gradientDuoTone='purpleToPink' type='submit' className='font-lora font-semibold'
             disabled={loading}>
               {
                 loading ? (
@@ -98,7 +98,7 @@ export default function SignIn() {
             </Button>
             <OAuth />
           </form>
-          <div className='flex gap-2 text-sm mt-5'>
+          <div className='flex gap-2 text-sm mt-5 font-philosopher'>
             <span>Chưa có tài khoản?</span>
             <Link to='/sign-up' className='text-blue-500'>Đăng kí</Link>
           </div>

@@ -48,11 +48,11 @@ export default function SignUp() {
       gap-5'>
         {/* left */}
         <div className='flex-1'>
-          <Link to="/" className=' text-kechuyentextlight text-4xl
-          font-bold dark:text-white font-lobster text-center'>
+          <Link to="/" className=' text-4xl
+          font-bold text-white font-lobster text-center'>
               <span className='py-1 text-buttextlight font-lobster dark:text-buttextdark'>But</span>kechuyen
           </Link>
-          <p className='text-md mt-5 font-philosopher'>
+          <p className='text-3xl mt-5 font-square-peg'>
           " chúng ta đều đến với thế giới này để yêu thương, và để được yêu thương. "
           </p>
         </div>
@@ -60,30 +60,33 @@ export default function SignUp() {
         <div className='flex-1'>
           <form action="" className='flex flex-col gap-4' onSubmit={handleSubmit}>
             <div className=''>
-              <Label value='Tên người dùng' />
+              <Label className='font-lora font-semibold' value='Tên người dùng' />
               <TextInput 
                 type='text'
+                className='font-semibold font-bellota'
                 placeholder='Tên người dùng'
                 id='username'
                 onChange={handleChange}/>
             </div>
             <div className=''>
-              <Label value='Email' />
+              <Label className='font-lora font-semibold' value='Email' />
               <TextInput 
                 type='text'
                 placeholder='Email'
+                className='font-semibold font-bellota'
                 id='email'
                 onChange={handleChange}/>
             </div>
             <div className=''>
-              <Label value='Mật khẩu' />
+              <Label className='font-lora font-semibold' value='Mật khẩu' />
               <TextInput 
                 type='password'
                 placeholder='Mật khẩu'
+                className='font-semibold font-bellota'
                 id='password'
                 onChange={handleChange}/>
             </div>
-            <Button gradientDuoTone='purpleToPink' type='submit'
+            <Button gradientDuoTone='purpleToPink' type='submit' className='font-lora font-semibold'
             disabled={loading}>
               {
                 loading ? (
@@ -96,7 +99,7 @@ export default function SignUp() {
             </Button>
             <OAuth />
           </form>
-          <div className='flex gap-2 text-sm mt-5'>
+          <div className='flex gap-2 text-sm mt-5 font-philosopher'>
             <span>Đã có tài khoản?</span>
             <Link to='/sign-in' className='text-blue-500'>Đăng nhập</Link>
           </div>

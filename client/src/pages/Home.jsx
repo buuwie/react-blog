@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <div className="bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/config%20images%2F%E2%98%81%EF%B8%8F%20in%20the%20sky.jfif?alt=media&token=2d3ad86e-abd8-43d0-b601-00f3404d5575')] bg-no-repeat bg-cover dark:bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/config%20images%2F328054589_1369942660445462_6076540014851764324_n.jpg?alt=media&token=4e23d80e-61c7-4eb4-823d-fa45677fd85c')] dark:bg-no-repeat dark:bg-cover">
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto '>
-        <h1 className='text-3xl font-bold lg:text-6xl font-courier'>Chào bạn, <Link to='/about' className='py-1 text-buttextlight dark:text-buttextdark hover:underline'>Bụt</Link> nè</h1>
+        <h1 className='text-3xl font-bold lg:text-6xl font-lobster'>Chào bạn, <Link to='/about' className='py-1 text-buttextlight dark:text-buttextdark hover:underline'>Bụt</Link> nè</h1>
         <p className='text-gray-600 text-sm sm:text-md dark:text-kechuyentextlight font-lora'>
           " Đời đôi khi vui một chút, rồi lại buồn một chút cũng được mà... " - <a className='font-moon-dance text-2xl font-semibold'>Butkechuyen</a>
         </p>

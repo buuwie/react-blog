@@ -11,7 +11,7 @@ export default function SearchPostCard({ post }) {
       </Link>
       <div className='p-3 flex flex-col gap-2'>
         <p className='text-lg font-semibold line-clamp-2 font-merriweather'>{post.title}</p>
-        <span className=' font-comic italic font-semibold text-sm'>{post.category}</span>
+        <span className=' font-bellota italic font-semibold text-sm'>{post.category}</span>
         <Link
           to={`/post/${post.slug}`}
           className='z-10 group-hover:bottom-0 absolute bottom-[-200px] font-lora left-0 right-0 border dark:border-teal-500 border-gray-500 dark:text-teal-500 text-gray-600 dark:hover:bg-teal-500 hover:text-white hover:bg-gray-600 dark:hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
