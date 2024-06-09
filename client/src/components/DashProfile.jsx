@@ -203,7 +203,7 @@ export default function DashProfile() {
             </Button>
             
         </form>
-        <div className='text-red-500 flex justify-between mt-5'>
+        <div className='text-red-500 flex justify-between mt-5 mb-10'>
             <span className='cursor-pointer font-lora font-semibold' onClick={() => setShowModal(true)}>Xóa tài khoản</span>
             <span className='cursor-pointer font-lora font-semibold' onClick={handleSignout}>Đăng xuất</span>
         </div>
