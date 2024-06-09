@@ -62,9 +62,9 @@ export default function FooterCom() {
                 </div>
             </div>
             <Footer.Divider />
-            <div className='w-full sm:flex sm:items-center sm:justify-between flex justify-between'>
+            <div className='w-full flex items-center justify-between footer-icons'>
                 <Footer.Copyright href='/' by="Butkechuyen" year={new Date().getFullYear()} className='font-lora font-semibold text-kechuyentextlight'/>
-                <div className='flex gap-6 mt-0 sm:justify-center'>
+                <div className='flex gap-6 mt-0 justify-center'>
                     <Footer.Icon href='https://www.facebook.com/its.butkechuyen/' icon={BsFacebook} target='_blank'
                             rel='noopener noreferer' className='text-kechuyentextlight' />
                     <Footer.Icon href='https://instagram.com/butkechuyen' icon={BsInstagram} target='_blank'

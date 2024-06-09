@@ -182,28 +182,30 @@ export default function DashboardComp() {
               <Link to={'/dashboard?tab=posts'} className='font-lora font-semibold'>Xem tất cả</Link>
             </Button>
           </div>
-          <Table hoverable>
-            <Table.Head className='font-philosopher'>
-              <Table.HeadCell>Thumbnail</Table.HeadCell>
-              <Table.HeadCell>Tiêu đề</Table.HeadCell>
-              <Table.HeadCell>Chủ đề</Table.HeadCell>
-            </Table.Head>
-            {posts &&
-              posts.map((post) => (
-                <Table.Body key={post._id} className='divide-y font-bellota'>
-                  <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
-                    <Table.Cell>
-                      <img
-                        src={post.image ?? 'https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/1715210620746270784039_3078232489054877_4577822641455101192_n.jpg?alt=media&token=2c8480a7-81ed-48a8-ba35-9b65f7474bbb'}
-                        className='w-14 h-10 rounded-md bg-gray-500'
-                      />
-                    </Table.Cell>
-                    <Table.Cell className='w-96'>{post.title}</Table.Cell>
-                    <Table.Cell className='w-5'>{post.category}</Table.Cell>
-                  </Table.Row>
-                </Table.Body>
-              ))}
-          </Table>
+          <div className='overflow-x-auto'>
+            <Table hoverable>
+              <Table.Head className='font-philosopher'>
+                <Table.HeadCell>Thumbnail</Table.HeadCell>
+                <Table.HeadCell>Tiêu đề</Table.HeadCell>
+                <Table.HeadCell>Chủ đề</Table.HeadCell>
+              </Table.Head>
+              {posts &&
+                posts.map((post) => (
+                  <Table.Body key={post._id} className='divide-y font-bellota'>
+                    <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
+                      <Table.Cell>
+                        <img
+                          src={post.image ?? 'https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/1715210620746270784039_3078232489054877_4577822641455101192_n.jpg?alt=media&token=2c8480a7-81ed-48a8-ba35-9b65f7474bbb'}
+                          className='w-14 h-10 rounded-md bg-gray-500'
+                        />
+                      </Table.Cell>
+                      <Table.Cell className='w-96'>{post.title}</Table.Cell>
+                      <Table.Cell className='w-5'>{post.category}</Table.Cell>
+                    </Table.Row>
+                  </Table.Body>
+                ))}
+            </Table>
+          </div>
         </div>
       </div>
     </div>

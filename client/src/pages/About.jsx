@@ -6,7 +6,7 @@ export default function About() {
     document.title = 'Giới thiệu - Bụt kể chuyện'
   })
   return (
-    <div className="min-h-screen flex items-center justify-center dark:bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/398732311_3569972549880866_5573575815435589773_n%20-%20Copy.jpg?alt=media&token=cdeb67d6-a12d-4cb6-99de-1b6f4c31087a')] dark:bg-no-repeat dark:bg-cover bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/config%20images%2F%E2%98%81%EF%B8%8F%20in%20the%20sky.jfif?alt=media&token=2d3ad86e-abd8-43d0-b601-00f3404d5575')] bg-no-repeat bg-cover">
+    <div className="min-h-screen flex items-center dark:bg-center bg-center justify-center dark:bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/398732311_3569972549880866_5573575815435589773_n%20-%20Copy.jpg?alt=media&token=cdeb67d6-a12d-4cb6-99de-1b6f4c31087a')] dark:bg-no-repeat dark:bg-cover bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/config%20images%2F%E2%98%81%EF%B8%8F%20in%20the%20sky.jfif?alt=media&token=2d3ad86e-abd8-43d0-b601-00f3404d5575')] bg-no-repeat bg-cover">
       <div className='max-w-2xl mx-auto p-3 text-center'>
         <div>
           <h1 className='text-4xl font font-semibold text-center my-7 font-philosopher'>

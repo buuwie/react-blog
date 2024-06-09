@@ -119,7 +119,7 @@ export default function Search() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/%E2%98%81%EF%B8%8F%20in%20the%20sky.jfif?alt=media&token=14cc5fa0-20ef-4ad7-b400-b333321f91ef')] bg-no-repeat bg-cover dark:bg-[url('https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/config%20images%2F328054589_1369942660445462_6076540014851764324_n.jpg?alt=media&token=4e23d80e-61c7-4eb4-823d-fa45677fd85c')] dark:bg-no-repeat dark:bg-cover">
+    <div className="flex flex-col md:flex-row">
       <div className='p-7 border-b md:border-r md:min-h-screen border-gray-500'>
         <form className='flex flex-col gap-8' onSubmit={handleSubmit}>
           <div className='flex items-center gap-2'>
@@ -174,7 +174,7 @@ export default function Search() {
         </h1>
         )}
         
-        <div className='p-7 flex flex-wrap gap-4'>
+        <div className='p-7 flex flex-wrap gap-4 mb-5'>
           {!loading && posts.length === 0 && (
             <p className='text-xl text-gray-500'>Không tìm thấy bài viết.</p>
           )}

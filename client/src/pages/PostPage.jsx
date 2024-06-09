@@ -95,11 +95,11 @@ export default function PostPage() {
         <img
           src={post && post.image}
 
-          className='mt-10 p-3 h-full w-full object-cover mx-auto'
+          className='mt-10 p-3 h-[70%] w-[70%] object-cover mx-auto'
         />
         <div className='flex justify-between p-3 border-b border-gray-500 mx-auto w-full max-w-2xl text-xs'>
-          <span className='font-courier italic font-semibold'>{post && new Date(post.createdAt).toLocaleDateString('en-GB')}</span>
-          <span className='font-comic italic font-semibold'>
+          <span className='font-bellota italic font-semibold'>{post && new Date(post.createdAt).toLocaleDateString('en-GB')}</span>
+          <span className='font-philosopher italic font-semibold'>
             {post && (post.content.length / 1000).toFixed(0)} mins read
           </span>
         </div>
