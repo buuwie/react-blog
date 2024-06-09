@@ -66,6 +66,12 @@ export default function DashboardComp() {
       fetchComments();
     }
   }, [currentUser]);
+
+  const truncateText = (text, length) => {
+    if (text.length <= length) return text;
+    return text.substring(0, length) + '...';
+  };
+
   return (
     <div className='p-3 md:mx-auto'>
       <div className='flex-wrap flex gap-4 justify-center'>
@@ -199,7 +205,7 @@ export default function DashboardComp() {
                           className='w-14 h-10 rounded-md bg-gray-500'
                         />
                       </Table.Cell>
-                      <Table.Cell className='w-96'>{post.title}</Table.Cell>
+                      <Table.Cell className='w-96'>{truncateText(post.title, 25)}</Table.Cell>
                       <Table.Cell className='w-5'>{post.category}</Table.Cell>
                     </Table.Row>
                   </Table.Body>

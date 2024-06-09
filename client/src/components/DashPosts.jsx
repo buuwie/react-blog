@@ -74,6 +74,11 @@ export default function DashPosts() {
     }
   };
 
+  const truncateText = (text, length) => {
+    if (text.length <= length) return text;
+    return text.substring(0, length) + '...';
+  };
+
   return (
     <div>
       <div className='table-auto font-semibold overflow-x-auto md:mx-auto p-3'>
@@ -110,7 +115,7 @@ export default function DashPosts() {
                         className='font-medium text-gray-900 dark:text-white'
                         to={`/post/${post.slug}`}
                       >
-                        {post.title}
+                        {truncateText(post.title, 25)}
                       </Link>
                     </TableCell>
                     <TableCell>{post.category}</TableCell>
