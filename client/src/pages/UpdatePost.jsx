@@ -285,12 +285,12 @@ export default function UpdatePost() {
             <option value="feelings">Lời tâm sự</option>
           </Select>
         </div>
-        <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
+        <div className='flex gap-4 items-center justify-between thumbnail border-4 border-teal-500 border-dotted p-3'>
           <FileInput
             type='file'
             accept='image/*'
             onChange={(e) => setThumbnail(e.target.files[0])}
-            className='font-lora'
+            className='font-lora thumbnail-upload'
           />
           <Button
             type='button'

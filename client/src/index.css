@@ -85,6 +85,18 @@ body {
         width: 100%;
         margin-top: 5px;
     }
+
+}
+
+@media only screen and (max-width: 471px) {
+    .thumbnail {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .thumbnail-upload {
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 306px) {
