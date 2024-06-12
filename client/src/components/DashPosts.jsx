@@ -80,7 +80,7 @@ export default function DashPosts() {
   };
 
   return (
-    <div>
+    <div className='md:mx-auto'>
       <div className='table-auto font-semibold overflow-x-auto md:mx-auto p-3'>
         {currentUser.isAdmin && userPosts.length > 0 ? (
           <>

@@ -65,7 +65,7 @@ export default function DashUsers() {
   };
 
   return (
-    <div>
+    <div  className='md:mx-auto'>
       <div className='table-auto font-semibold overflow-x-auto md:mx-auto p-3 mb-5'>
         {currentUser.isAdmin && users.length > 0 ? (
           <>

@@ -26,7 +26,17 @@ export default function CreatePost() {
 
     useEffect(() => {
         document.title = 'Tạo bài viết mới - Bụt kể chuyện'
-    })
+
+        const savedFormData = sessionStorage.getItem('formData')
+        if (savedFormData) {
+            setFormData(JSON.parse(savedFormData));
+        }
+    }, [])
+
+    useEffect(() => {
+        // Save form data to localStorage whenever formData changes
+        sessionStorage.setItem('formData', JSON.stringify(formData));
+    }, [formData]);
 
     const handleUploadImage = async () => {
         try {
@@ -92,6 +102,7 @@ export default function CreatePost() {
           if (res.ok) {
             setPublishError(null);
             navigate(`/post/${data.slug}`);
+            sessionStorage.removeItem('formData')
           }
         } catch (error) {
           setPublishError('Có lỗi gì đó khi tạo bài viết mới :(');
@@ -271,10 +282,12 @@ export default function CreatePost() {
                     <TextInput type='text' placeholder='Tiêu đề bài viết' required id='title'
                     className='flex-1 font-merriweather font-semibold' onChange={(e) =>
                         setFormData({ ...formData, title: e.target.value })
-                      } />
+                      }
+                    value={formData.title} />
                     <Select onChange={(e) =>
                         setFormData({ ...formData, category: e.target.value })
                     }
+                    value={formData.category}
                     className='font-merriweather'>
                         <option value="random">Chuyện lung tung</option>
                         <option value="life">Chuyện đời sống</option>
@@ -328,6 +341,7 @@ export default function CreatePost() {
                     onChange={(value) => {
                         setFormData({ ...formData, content: value })
                     }}
+                    value={formData.content}
                     modules={{
                         toolbar: {
                             container: [
