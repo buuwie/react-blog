@@ -97,14 +97,14 @@ export default function PostPage() {
 
           className='mt-10 p-3 h-[80%] w-[80%] object-cover mx-auto'
         />
-        <div className='flex justify-between p-3 border-b border-gray-500 mx-auto w-full max-w-2xl text-xs'>
+        <div className='flex justify-between p-2 border-b border-gray-500 mx-auto w-full max-w-3xl text-xs'>
           <span className='font-bellota italic font-semibold'>{post && new Date(post.createdAt).toLocaleDateString('en-GB')}</span>
           <span className='font-philosopher italic font-semibold'>
             {post && (post.content.length / 1000).toFixed(0)} mins read
           </span>
         </div>
         <div
-          className='p-3 max-w-2xl mx-auto w-full post-content font-lora dark:text-white text-black'
+          className='p-3 max-w-3xl mx-auto w-full post-content font-lora dark:text-white text-black'
           dangerouslySetInnerHTML={{ __html: post && post.content }}
         ></div>
         <div className='max-w-4xl mx-auto w-full border-t border-gray-500'>

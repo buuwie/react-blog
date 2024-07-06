@@ -53,8 +53,30 @@ body {
     align-items: right;
 }
 
-.post-content .ql.align-justify {
+.post-content .ql-align-justify {
     text-align: justify;
+}
+
+.post-content blockquote {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 20px; /* hoặc 2em */
+    border-left: 5px solid grey;
+    font-size: 18px;
+    font-style: italic;
+}
+
+.post-content .ql-size-small {
+    font-size: small;
+}
+
+.post-content .ql-size-large {
+    font-size: large;
+}
+
+.post-content .ql-size-huge {
+    font-size: x-large;
 }
 
 .dark .post-content a {

@@ -338,7 +338,7 @@ export default function UpdatePost() {
                       [{ 'size': [] }],
                       [{ 'align' : []}],
                       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-                      [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+                      // [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
                       ['link', 'video', 'image', 'background'],
                       ['clean'],
                   ],
