@@ -112,7 +112,7 @@ export default function DashPosts() {
                     </TableCell>
                     <TableCell>
                       <Link
-                        className='font-medium text-gray-900 dark:text-white'
+                        className='font-medium text-gray-900 dark:text-white font-lora'
                         to={`/post/${post.slug}`}
                       >
                         {truncateText(post.title, 25)}
@@ -125,7 +125,7 @@ export default function DashPosts() {
                           setShowModal(true);
                           setPostIdToDelete(post._id);
                         }}
-                        className='font-medium text-red-500 hover:underline cursor-pointer'
+                        className='font-medium text-red-500 hover:underline cursor-pointer font-bellota'
                       >
                         Xóa
                       </span>

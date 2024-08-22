@@ -69,11 +69,12 @@ export const signin = async (req, res, next) => {
         );
 
         const {password: pass, ...rest} = validUser._doc;
-        res.status(200).cookie('access_token', token, {
+        res.status(200).cookie(
+          'access_token', token, {
             httpOnly: true,
             expires: new Date(Date.now() + 43200000)
         }).json(rest);
-    } catch (error) {
+    } catch (error) { 
         next(error)
     }
 }
