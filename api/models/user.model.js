@@ -24,6 +24,26 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    fullname: {
+        type: String,
+        default: '',
+    },
+    bio: {
+        type: String,
+        maxLength: 250,
+        default: '',
+    },
+    headline: {
+        type: String,
+        default: '',
+    },
+    socialLinks: {
+        website: { type: String, default: '' },
+        youtube: { type: String, default: '' },
+        facebook: { type: String, default: '' },
+        twitter: { type: String, default: '' },
+        linkedin: { type: String, default: '' },
+    },
     }, {timestamps: true}
 );
 
