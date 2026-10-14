@@ -84,8 +84,8 @@ export default function DashComments() {
                 <TableHeadCell>Ngày chỉnh sửa</TableHeadCell>
                 <TableHeadCell>Lời bình luận</TableHeadCell>
                 <TableHeadCell>Lượt thích</TableHeadCell>
-                <TableHeadCell>ID bài viết</TableHeadCell>
-                <TableHeadCell>ID người dùng</TableHeadCell>
+                <TableHeadCell>Bài viết</TableHeadCell>
+                <TableHeadCell>Tên người dùng</TableHeadCell>
                 <TableHeadCell>Tác vụ</TableHeadCell>
               </TableHead>
               {comments.map((comment) => (
@@ -96,8 +96,8 @@ export default function DashComments() {
                     </TableCell>
                     <TableCell>{comment.content}</TableCell>
                     <TableCell>{comment.numberOfLikes}</TableCell>
-                    <TableCell>{comment.postId}</TableCell>
-                    <TableCell>{comment.userId}</TableCell>
+                    <TableCell>{comment.postId.title}</TableCell>
+                    <TableCell>{comment.userId.username}</TableCell>
                     <TableCell>
                       <span
                         onClick={() => {
