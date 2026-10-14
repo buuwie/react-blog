@@ -112,14 +112,9 @@ export const getcomments = async (req, res, next) => {
       .sort({ createdAt: sortDirection })
       .skip(startIndex)
       .limit(limit)
-      .populate({
-        path: Post,
-        select: "title",
-      })
-      .populate({
-        path: User,
-        select: "username",
-      });
+      .populate('postId', 'title')
+      .populate('userId', 'username');
+    
     const totalComments = await Comment.countDocuments();
     const now = new Date();
     const oneMonthAgo = new Date(
