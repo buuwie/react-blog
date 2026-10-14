@@ -39,7 +39,7 @@ export const getPosts = async (req, res, next) => {
         const startIndex = parseInt(req.query.startIndex) || 0;
         const limit = parseInt(req.query.limit) || 9;
         const sortDirection = req.query.sort === 'asc' ? 1 : -1;
-        const queryUserId = '';
+        let queryUserId = '';
         if (req.query.userId) {
             queryUserId = new mongoose.Types.ObjectId(req.query.userId);
         }
