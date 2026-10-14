@@ -33,6 +33,7 @@ export const getPostComments = async (req, res, next) => {
     const comments = await Comment.find({ postId: postObjectId }).sort({
       createdAt: -1,
     });
+    console.log(postObjectId,comments);
     res.status(200).json(comments);
   } catch (error) {
     next(error);
