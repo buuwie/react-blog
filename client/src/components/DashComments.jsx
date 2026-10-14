@@ -97,8 +97,8 @@ export default function DashComments() {
                     </TableCell>
                     <TableCell>{comment.content}</TableCell>
                     <TableCell>{comment.numberOfLikes}</TableCell>
-                    <TableCell>{comment.postId.title}</TableCell>
-                    <TableCell>{comment.userId.username}</TableCell>
+                    <TableCell>{comment.postId?.title}</TableCell>
+                    <TableCell>{comment.userId?.username}</TableCell>
                     <TableCell>
                       <span
                         onClick={() => {
