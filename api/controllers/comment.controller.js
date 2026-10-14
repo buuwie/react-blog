@@ -1,4 +1,6 @@
 import Comment from '../models/comment.model.js';
+import Post from '../models/post.model.js';
+import User from '../models/user.model.js';
 import { errorHandler } from '../utils/error.js';
 
 export const createComment = async (req, res, next) => {
@@ -109,7 +111,15 @@ export const getcomments = async (req, res, next) => {
     const comments = await Comment.find()
       .sort({ createdAt: sortDirection })
       .skip(startIndex)
-      .limit(limit);
+      .limit(limit)
+      .populate({
+        path: Post,
+        select: "title",
+      })
+      .populate({
+        path: User,
+        select: "username",
+      });
     const totalComments = await Comment.countDocuments();
     const now = new Date();
     const oneMonthAgo = new Date(
