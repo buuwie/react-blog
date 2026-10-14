@@ -28,7 +28,7 @@ export const createComment = async (req, res, next) => {
 
 export const getPostComments = async (req, res, next) => {
   try {
-    const postObjectId = new moogoose.Types.ObjectId(req.params.postId);
+    const postObjectId = new mongoose.Types.ObjectId(req.params.postId);
     const comments = await Comment.find({ postId: postObjectId }).sort({
       createdAt: -1,
     });
