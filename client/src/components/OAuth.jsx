@@ -20,7 +20,7 @@ export default function OAuth() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            name: resultsFromGoogle.user.displayName,
+            name: (resultsFromGoogle.user.displayName).normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
             email: resultsFromGoogle.user.email,
             googlePhotoUrl: resultsFromGoogle.user.photoURL,
         }),

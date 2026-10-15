@@ -17,7 +17,7 @@ export default function CallToAction() {
             </Button>
         </div>
         <div className="p-7 flex-1">
-            <img src="https://firebasestorage.googleapis.com/v0/b/reactblog-c896c.appspot.com/o/config%20images%2F247676410_602108137483035_8743625254088139593_n%20-%20Copy%20(5)%20-%20Copy%20-%20Copy%20-%20Copy.jpg?alt=media&token=47b47cae-5b48-412c-8d71-b57bc5979fed" />
+            <img src="https://pub-af1da45e22764d3382f585d172e665dd.r2.dev/config%20images/247676410_602108137483035_8743625254088139593_n%20-%20Copy%20(5)%20-%20Copy%20-%20Copy%20-%20Copy.jpg" />
         </div>
     </div>
   )

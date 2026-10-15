@@ -8,9 +8,9 @@ import PostCard from '../components/PostCard';
 export default function PostPage() {
   const { postSlug } = useParams();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
-  const [recentPosts, setRecentPosts] = useState(null);
+  // const [recentPosts, setRecentPosts] = useState(null);
   const [randomPostsByCategory, setRandomPostsByCategory] = useState(null)
   const [postCategory, setPostCategory] = useState(null);
 
@@ -21,7 +21,7 @@ export default function PostPage() {
         const res = await fetch(`/api/post/getposts?slug=${postSlug}`);
         const data = await res.json();
         if (!res.ok) {
-          setError(true);
+          // setError(true);
           setLoading(false);
           return;
         }
@@ -30,31 +30,31 @@ export default function PostPage() {
           document.title = `${data.posts[0].title} - Bụt kể chuyện`
           setPostCategory(data.posts[0].category)
           setLoading(false);
-          setError(false);
+          // setError(false);
         }
       } catch (error) {
-        setError(true);
+        // setError(true);
         setLoading(false);
       }
     };
     fetchPost();
   }, [postSlug]);
 
-  useEffect(() => {
-    try {
-      const fetchRecentPosts = async () => {
-        const res = await fetch(`/api/post/getposts?limit=3`);
-        const data = await res.json();
-        if (res.ok) {
-          setRecentPosts(data.posts);
+  // useEffect(() => {
+  //   try {
+  //     const fetchRecentPosts = async () => {
+  //       const res = await fetch(`/api/post/getposts?limit=3`);
+  //       const data = await res.json();
+  //       if (res.ok) {
+  //         setRecentPosts(data.posts);
           
-        }
-      };
-      fetchRecentPosts();
-    } catch (error) {
-      console.log(error.message);
-    }
-  }, []);
+  //       }
+  //     };
+  //     fetchRecentPosts();
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }, []);
 
   useEffect(() => {
     try {
@@ -100,7 +100,7 @@ export default function PostPage() {
         <div className='flex justify-between p-2 border-b border-gray-500 mx-auto w-full max-w-3xl text-xs'>
           <span className='font-bellota italic font-semibold'>{post && new Date(post.createdAt).toLocaleDateString('en-GB')}</span>
           <span className='font-philosopher italic font-semibold'>
-            {post && (post.content.length / 1000).toFixed(0)} mins read
+            {post && (post.content.length / 500).toFixed(0)} mins read
           </span>
         </div>
         <div

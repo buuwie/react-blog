@@ -41,7 +41,7 @@ export const getPosts = async (req, res, next) => {
         const sortDirection = req.query.sort === 'asc' ? 1 : -1;
         let queryUserId = '';
         if (req.query.userId) {
-            queryUserId = new mongoose.Types.ObjectId(req.query.userId);
+            queryUserId = new mongoose.Types.ObjectId(String(req.query.userId));
         }
         const posts = await Post.find({
         ...(req.query.userId && { userId: queryUserId }),

@@ -129,3 +129,61 @@ export const getUser = async (req, res, next) => {
     next(error);
   }
 };
+
+const login = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      res.status(400).json("Vui lòng nhập đầy đủ thông tin đăng nhập")
+    }
+
+    // Find user
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: 'Người dùng không tồn tại!'
+      });
+    }
+
+    // Check password
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+      return res.status(401).json({
+        success: false,
+        message: 'Sai mật khẩu!'
+      });
+    }
+
+    // save session
+    req.session = req.session || {};
+    req.session.userId = user._id;
+
+    const token = jwt.sign(
+        {
+            id: validUser._id,
+            isAdmin: validUser.isAdmin
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: '43200s' }
+    );
+
+    // res.status(200).json({
+    //   success: true,
+    //   message: 'Đăng nhập thành công'
+    // });
+    const {password: pass, ...rest} = validUser._doc;
+    res.status(200).cookie(
+      'access_token', token, {
+        httpOnly: true,
+        expires: new Date(Date.now() + 43200000)
+    }).json({success: true, message: 'Đăng nhập thành công'});
+
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({
+      success: false, 
+      message: 'Lỗi khi đăng nhập',
+    });
+  }
+};
